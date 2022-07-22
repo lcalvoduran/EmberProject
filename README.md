@@ -15,7 +15,7 @@ El de guardar va a escribir el estado del favorito de una vivienda.
 
 # GOALS
 
-- Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando
+- ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando 
 - Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
 - Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
