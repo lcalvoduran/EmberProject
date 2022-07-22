@@ -13,7 +13,7 @@ export default class ShareButtonComponent extends Component {
 
   get shareURL() {
     let url = new URL(TWEET_INTENT);
-    console.log('Obteniendo constante URL' + url);
+    //console.log('Obteniendo constante URL' + url);
 
     url.searchParams.set('url', this.currentURL);
 

@@ -13,7 +13,7 @@ El de cargar va a leer del localStorage el objeto 'favourites', que es un json q
 El de guardar va a escribir el estado del favorito de una vivienda.
 
 
-# GOALS
+# Goals
 
 - ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando 
 - Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
