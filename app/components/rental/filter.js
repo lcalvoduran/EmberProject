@@ -7,8 +7,7 @@ export default class RentalsFilterComponent extends Component {
     if (query) {
       rentals = rentals.filter((rental) => rental.title.includes(query));
     }
-    
+
     return rentals;
-   
   }
 }

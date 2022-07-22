@@ -16,9 +16,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Veruca Salt',
           city: 'San Francisco',
           location: {
-            "x": 3,
-            "y": 2,
-            "z": 4,
+            x: 3,
+            y: 2,
+            z: 4,
           },
           category: 'Estate',
           type: 'Standalone',
@@ -34,9 +34,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Mike Teavee',
           city: 'Seattle',
           location: {
-            "x": 4,
-            "y": 3,
-            "z": 5,
+            x: 4,
+            y: 3,
+            z: 5,
           },
           category: 'Condo',
           type: 'Community',
@@ -52,9 +52,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Violet Beauregarde',
           city: 'Portland',
           location: {
-            "x": 5,
-            "y": 4,
-            "z": 6,
+            x: 5,
+            y: 4,
+            z: 6,
           },
           category: 'Apartment',
           type: 'Community',
@@ -68,13 +68,11 @@ module('Integration | Component | rental', function (hooks) {
     });
   });
 
-
- 
   test('Input test rentals let´s go!!!', async function (assert) {
     await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
-    
+
     assert.dom('.rentals input').exists();
 
     assert.dom('.rentals .results').exists();
@@ -92,7 +90,7 @@ module('Integration | Component | rental', function (hooks) {
       .dom('.rentals .results li:nth-of-type(3)')
       .containsText('Downtown Charm');
   });
- 
+
   test('Actualiza la query con nuevos resultados', async function (assert) {
     await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
