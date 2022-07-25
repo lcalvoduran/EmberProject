@@ -5,12 +5,14 @@ Proyecto Ember JS
 
 ## Goals
 - ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando
+  <br /> 
   Solución: Se ha creado un component-class (ya que un component-class nos permite que definamos un comportamiento asociado a ese componente de esa forma
             con este tipo de componente nos generará un archivo JavaScript pordefecto). Aunque Ember tras ejecutar el comando "generate component" o el 
             comando "generate component-class ... " no nos defina el template, como no se ha visto necesario pero se ha requerido, se ha creado un template
             para ello.
             <br /> Screenshot: https://imgur.com/SHmyYy2
 - ~~COMPLETED~~ Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
+  <br /> 
   Solución: Como previamente habíamos creado el archivo JavaScript con el component class sólo teníamos que hacer que llamase a este archivo cada vez que
             detectará un evento "click" a la hora de pulsar el botón de manera que podíamos observar que caa vez que pulsábamos este botón nos imprimía
             algo en la consola del tipo "Has pulsado el botón". 
