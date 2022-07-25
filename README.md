@@ -1,13 +1,22 @@
 ### REPOSITORIO LEANDRO EMBER.JS ###
 
-**INTRODUCCIÓN**
-Este repositorio será utilizado por Leandro Calvo Durán para que sirva de tutorial para la librería Ember.JS
+Proyecto Ember JS 
 
 
-# super-rentals
+## Goals
+- ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando
+  Solución: Se ha creado un component-class (ya que un component-class nos permite que definamos un comportamiento asociado a ese componente de esa forma
+            con este tipo de componente nos generará un archivo JavaScript pordefecto). Aunque Ember tras ejecutar el comando "generate component" o el 
+            comando "generate component-class ... " no nos defina el template, como no se ha visto necesario pero se ha requerido, se ha creado un template
+            para ello.
+- ~~COMPLETED~~ Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
+  Solución: Como previamente habíamos creado el archivo JavaScript con el component class sólo teníamos que hacer que llamase a este archivo cada vez que
+            detectará un evento "click" a la hora de pulsar el botón de manera que podíamos observar que caa vez que pulsábamos este botón nos imprimía
+            algo en la consola del tipo "Has pulsado el botón". 
+- **IN PROGRESS** Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+
+
 
 ## Prerequisites
 
