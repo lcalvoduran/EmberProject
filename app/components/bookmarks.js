@@ -4,16 +4,15 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class BookmarksComponent extends Component {
-  @service('bookmarks') bookmarks;
-  get bookmarks(){
-    return true; 
-  }
+  @service bookmarks;
   @tracked isGreen = false;
-  @action toggleBookmark() {
-    myFunction();
+  @action usaServicio() {
     this.isGreen = !this.isGreen;
+    console.log("Se ha pulsado el botón");
+    this.bookmarks.usaServicio();
   }
 }
 function myFunction() {
   console.log('Hola has pulsado el botón');
+  
 }
