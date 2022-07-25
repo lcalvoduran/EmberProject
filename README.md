@@ -14,8 +14,8 @@ Proyecto Ember JS
   Solución: Como previamente habíamos creado el archivo JavaScript con el component class sólo teníamos que hacer que llamase a este archivo cada vez que
             detectará un evento "click" a la hora de pulsar el botón de manera que podíamos observar que caa vez que pulsábamos este botón nos imprimía
             algo en la consola del tipo "Has pulsado el botón". 
-            Screenshot [1]: https://imgur.com/a/n8GHRJ3
-            Screenshot [2]: https://imgur.com/1CuKzZp
+            <br /> Screenshot [1]: https://imgur.com/a/n8GHRJ3
+            <br /> Screenshot [2]: https://imgur.com/1CuKzZp
 - **IN PROGRESS** Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
 
