@@ -4,13 +4,15 @@
         <button
             ...attributes
             type="button" 
-            class="image" {{on "click" this.usaServicio}}>
+            id = {{@id}}
+            class="image" {{on "click" this.usaServicio}}>    
             <small>📕</small>
         </button>
     {{else}}
         <button
             ...attributes 
             type="button" 
+            id = {{@id}}
             class="image" {{on "click" this.usaServicio}}>
             <small>📗</small>
         </button>

@@ -12,6 +12,7 @@ export default class BookmarksComponent extends Component {
   @action usaServicio() {
     this.isGreen = !this.isGreen;
     console.log("Se ha pulsado el botón");
+    
     //Llamada a la función del servicio "bookmarks"
     this.bookmarks.usaServicio();
   }

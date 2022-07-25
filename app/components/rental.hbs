@@ -14,7 +14,7 @@
     </div>
     <div class="detail type">
 {{!--       <span>Type:</span> Standalone --}}
-    <span>Type:</span> {{@rental.attributes.type}}
+    <span>Type:</span> {{@rental.type}}
     </div>
     <div class="detail location">
 {{!--       <span>Location:</span> San Francisco --}}
@@ -35,7 +35,7 @@
     alt="A map of {{@rental.title}}"
   />
   <Bookmarks>
-   
+   @id = {{@rental.id}}
   </Bookmarks>
 
 </article>
