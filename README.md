@@ -9,7 +9,7 @@ Proyecto Ember JS
             con este tipo de componente nos generará un archivo JavaScript pordefecto). Aunque Ember tras ejecutar el comando "generate component" o el 
             comando "generate component-class ... " no nos defina el template, como no se ha visto necesario pero se ha requerido, se ha creado un template
             para ello.
-            Screenshot: https://imgur.com/SHmyYy2
+            <br /> Screenshot: https://imgur.com/SHmyYy2
 - ~~COMPLETED~~ Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
   Solución: Como previamente habíamos creado el archivo JavaScript con el component class sólo teníamos que hacer que llamase a este archivo cada vez que
             detectará un evento "click" a la hora de pulsar el botón de manera que podíamos observar que caa vez que pulsábamos este botón nos imprimía
