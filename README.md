@@ -12,15 +12,10 @@ Proyecto Ember JS
             para ello.
             <br /> Screenshot: https://imgur.com/SHmyYy2
 - **IN PROGRESS** Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo.
-  <br /> 
-            1 - Crear el servicio ~~Done~~
-<br />             
+            1 - Crear el servicio ~~Done~~           
             2 - Hacer un metodo en el servicio ~~Done~~
-            <br /> 
             3 - Importar el servicio en el componente ~~Done~~
-            <br /> 
             4 - Llamar al metodo del servicio en el componente ~~Done~~
-            <br /> 
             5 - Recibir la ID 
             
 - **IN PROGRESS** Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
