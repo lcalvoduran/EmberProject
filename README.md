@@ -4,7 +4,7 @@ Proyecto Ember JS
 
 
 ## Goals
-- ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando.
+- ~~DONE~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando.
   <br /> 
   **Solución**: Se ha creado un component-class (ya que un component-class nos permite que definamos un comportamiento asociado a ese componente de esa forma
             con este tipo de componente nos generará un archivo JavaScript pordefecto). Aunque Ember tras ejecutar el comando "generate component" o el 
@@ -13,7 +13,11 @@ Proyecto Ember JS
             <br /> Screenshot: https://imgur.com/SHmyYy2
 - **IN PROGRESS** Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo.
   <br /> 
-
+            1 - Crear el servicio ~~Done~~
+            2 - Hacer un metodo en el servicio ~~Done~~
+            3 - Importar el servicio en el componente ~~Done~~
+            4 - Llamar al metodo del servicio en el componente ~~Done~~
+            5 - Recibir la ID 
 - **IN PROGRESS** Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
 
