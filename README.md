@@ -1,23 +1,8 @@
-### EMBER PROJECT - Leandro ###
+### REPOSITORIO LEANDRO EMBER.JS ###
 
 **INTRODUCCIÓN**
-Este repositorio es el super-rentals-2
+Este repositorio será utilizado por Leandro Calvo Durán para que sirva de tutorial para la librería Ember.JS
 
-
-# Features
-
-- Mostar un botoncito de 'favorito' al lado de cada elemento de la lista esa de viviendas.
-- Ese botoncito seria un componente 'FavouriteButton' que recibe una id (la del la vivienda) y su logica interna es que si lo pulsas llama a un servicio 'FavouriteService' para guardar su estado. Aparte de esto, el boton cambia su icono segun el estado (puede ser una estrellita vacia si no esta seleccionado y una llena cuando lo está).
-- El servicio 'FavouriteService' tiene 2 metodos, el del guardar un estado y el del cargar un estado.
-El de cargar va a leer del localStorage el objeto 'favourites', que es un json que contiene las ids de cada vivienda junto con un boolean que dice si se selecciono como favorita o no.
-El de guardar va a escribir el estado del favorito de una vivienda.
-
-
-# Goals
-
-- ~~COMPLETED~~ Crear el boton de favorito y ver que se pinte y cambie el icono cuando lo vas pulsando 
-- Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo
-- Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
 # super-rentals
 
