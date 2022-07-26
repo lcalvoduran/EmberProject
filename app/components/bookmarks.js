@@ -23,7 +23,7 @@ export default class BookmarksComponent extends Component {
     
 
     //Llamada a la función del servicio "bookmarks"
-    this.bookmarks.saveID();
+    this.bookmarks.saveID(argID);
   }
 }
 

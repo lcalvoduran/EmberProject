@@ -14,9 +14,10 @@ Proyecto Ember JS
 - ~~DONE~~ Hacer el servicio y que cuando lo pulses llame al metodo de guardar e imprima algo.
           Crear el servicio ~~Done~~ => Hacer un metodo en el servicio ~~Done~~ => Importar el servicio en el componente ~~Done~~ => Llamar al metodo del servicio en el componente ~~Done~~ =>  Recibir la ID ~~Done~~ => Que al servicio se le pase la ID y la guarde y además imprima.
 
+El de guardar va a escribir el estado del favorito de una vivienda.
 
 - **IN PROGRESS** Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
-
+El de cargar va a leer del localStorage el objeto 'favourites', que es un json que contiene las ids de cada vivienda junto con un boolean que dice si se selecciono como favorita o no.
 
 
 
