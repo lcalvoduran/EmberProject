@@ -16,11 +16,9 @@ export default class BookmarksComponent extends Component {
     const argID = this.args.id;
     console.log("Valor isGreen: " +this.isGreen);
     this.isGreen = !this.isGreen;
-  
     console.log("Se ha pulsado el botón");
-    console.log("Argumento ID con tracked: " + this.argumentoID);
-    console.log("Argumento ID sin tracked: " + argID);
-    
+    //console.log("Argumento ID con tracked: " + this.argumentoID);
+    //console.log("Argumento ID sin tracked: " + argID);
 
     //Llamada a la función del servicio "bookmarks"
     this.bookmarks.saveID(argID);

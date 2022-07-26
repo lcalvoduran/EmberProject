@@ -7,12 +7,13 @@ export default class BookmarksService extends Service {
 
     // -> SAVE: Que guarde algo e imprima algo
     saveID(argID){
-         console.log("...You're using saveID service");
-         console.log("Hello " + argID);
-         return true;
+        console.log("=== SERVICES === [saveID]"); 
+        console.log("...You're using saveID service and your ID is: " + argID);
+        
     }
 
-    loadID(){
-        console.log("... You're using loadID service");
+    loadID(argID){
+        console.log("=== SERVICES === [loadID]"); 
+        console.log("... You're using loadID service and your ID is: " + argID);
     }
 }
