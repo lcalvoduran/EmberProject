@@ -20,6 +20,6 @@ export default class BookmarksComponent extends Component {
     console.log("Argumento ID sin tracked: " + argID);
     
     //Llamada a la función del servicio "bookmarks"
-    this.bookmarks.usaServicio();
+    this.bookmarks.saveID(argumentoID);
   }
 }
