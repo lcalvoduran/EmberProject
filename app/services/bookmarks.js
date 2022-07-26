@@ -10,13 +10,15 @@ export default class BookmarksService extends Service {
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
         /** === Guardado con localStorage ===**/
-
-        const list =  {
-            "ID": argID,
-            "STATE": booleano
-          }
-
-        localStorage.setItem('session', list);
+        
+        const browsers = [
+            { ID: argID, STATE: booleano }
+        ];
+         
+        localStorage.setItem('browsers', JSON.stringify(browsers));
+         
+        var localStorageObject = localStorage.getItem('browsers');
+        console.log(JSON.parse(localStorageObject));
        
         
         /**
