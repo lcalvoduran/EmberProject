@@ -10,19 +10,17 @@ export default class BookmarksComponent extends Component {
   @service bookmarks;
   @tracked isGreen = false;
   //Accedemos a nuestro argumento mediante this.args.id, sin embargo como seguramente lleguemos a trackear esta ID la guardamos aqui
-  @tracked argumentoID = this.args.id;
   //El action que me pide el component 
-  @action usaServicio(argumentoID) {
+  @action useService() {
     const argID = this.args.id;
     console.log("Valor isGreen: " +this.isGreen);
     this.isGreen = !this.isGreen;
     console.log("Se ha pulsado el botón");
-    //console.log("Argumento ID con tracked: " + this.argumentoID);
-    //console.log("Argumento ID sin tracked: " + argID);
+
 
     //Llamada a la función del servicio "bookmarks"
     
     this.bookmarks.saveID(argID);
-    //this.bookmarks.loadID(argID);
+
   }
 }

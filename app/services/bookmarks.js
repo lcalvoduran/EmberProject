@@ -14,13 +14,6 @@ export default class BookmarksService extends Service {
         const cat = localStorage.getItem('listID');
         console.log("Lista localStorage: " + cat);
        
-
-        /** === Guardado con arrays ===**/
-        /**
-        var listID = [];
-        listID.push(argID);
-        console.log("Lista de IDs " + listID);
-         **/
         
     }
 
