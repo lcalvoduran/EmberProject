@@ -10,8 +10,11 @@ export default class BookmarksService extends Service {
         console.log("=== SERVICES === [saveID]"); 
         console.log("...You're using saveID service and your ID is: " + argID);
         /** === Guardado con localStorage ===**/
+        localStorage.setItem('listID', argID);
+        const cat = localStorage.getItem('listID');
+        console.log("Lista localStorage: " + cat);
+       
 
-        
         /** === Guardado con arrays ===**/
         /**
         var listID = [];
