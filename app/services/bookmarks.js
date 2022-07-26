@@ -24,8 +24,9 @@ export default class BookmarksService extends Service {
         
     }
 
-    loadID(argID){
+    loadID(argID){        
         console.log("=== SERVICES === [loadID]"); 
         console.log("... You're using loadID service and your ID is: " + argID);
+
     }
 }

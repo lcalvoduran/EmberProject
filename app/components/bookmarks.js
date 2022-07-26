@@ -21,13 +21,8 @@ export default class BookmarksComponent extends Component {
     //console.log("Argumento ID sin tracked: " + argID);
 
     //Llamada a la función del servicio "bookmarks"
+    
     this.bookmarks.saveID(argID);
+    //this.bookmarks.loadID(argID);
   }
 }
-
-
-/**
- *  =============== LOCALSTORAGE USAGE =============
- *  localStorage.setItem("idLocal", argID);
-    document.getElementsByClassName("image").innerHTML = localStorage.getItem("idLocal");
- */
