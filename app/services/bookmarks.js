@@ -6,14 +6,20 @@ export default class BookmarksService extends Service {
     //======> 2 Métodos dentro del servicio 
 
     // -> SAVE: Que guarde algo e imprima algo
-    saveID(argID){
+    saveID(argID, booleano){
         console.log("=== SERVICES === [saveID]"); 
-        console.log("...You're using saveID service and your ID is: " + argID);
+        console.log("... ID: [" + argID + "] [State]: "+ booleano);
         /** === Guardado con localStorage ===**/
+        let list =  {
+            "Id": argID,
+            "State": booleano
+        }
+        console.log(list);
+        /**
         localStorage.setItem('listID', argID);
         const cat = localStorage.getItem('listID');
         console.log("Lista localStorage: " + cat);
-       
+        **/
         
     }
 
