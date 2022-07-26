@@ -12,7 +12,7 @@ export default class BookmarksComponent extends Component {
   //Accedemos a nuestro argumento mediante this.args.id, sin embargo como seguramente lleguemos a trackear esta ID la guardamos aqui
   @tracked argumentoID = this.args.id;
   //El action que me pide el component 
-  @action usaServicio() {
+  @action usaServicio(argumentoID) {
     const argID = this.args.id
     this.isGreen = !this.isGreen;
     console.log("Se ha pulsado el botón");

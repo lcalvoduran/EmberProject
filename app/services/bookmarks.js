@@ -7,7 +7,7 @@ export default class BookmarksService extends Service {
 
     // -> SAVE: Que guarde algo e imprima algo
     usaServicio(){
-
+         
          console.log("Hola estás usando el servicio de save");
          return true;
     }
