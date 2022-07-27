@@ -12,7 +12,7 @@ export default class BookmarksService extends Service {
         /** === Guardado con localStorage ===**/
 
         localStorage.setItem(argID, booleano);
-        localStorage.getItem(argID);
+     
                
     }
 
@@ -24,8 +24,10 @@ export default class BookmarksService extends Service {
             console.log("[ID]: " + key + " [STATE]: " + localStorage.getItem(key));
             if(!key){
                 console.log("No hay datos en localStorage");
+                return false
             }else{
-                console.log(document.getElementById(key));
+                console.log(document.getElementById(key).innerHTML="He cambiado");
+                return true
             }
         }
 
