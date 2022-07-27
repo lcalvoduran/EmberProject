@@ -20,7 +20,7 @@ export default class BookmarksService extends Service {
         myObj.push();
         console.log(myObj);
         //Guardar la lista en el localStorage
-        localStorage.setItem(argID, booleano);
+        localStorage.setItem("miLista", myObj);
 
                
     }
@@ -28,6 +28,7 @@ export default class BookmarksService extends Service {
     loadID(){        
         console.log("=== SERVICES === [loadID]"); 
         console.log("... You're using loadID service ");
+        console.log("El JSON tiene las siguientes viviendas" + myObj);
 
 
 
