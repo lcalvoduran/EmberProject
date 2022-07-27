@@ -10,26 +10,15 @@ export default class BookmarksService extends Service {
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
         /** === Guardado con localStorage ===**/
+
+        localStorage.setItem(argID, booleano);
+       
         
         /**
-        const list = [
-            { ID: argID, STATE: booleano }
-        ];
+        localStorage.setItem('listID', argID);
+        const cat = localStorage.getItem('listID');
+        console.log("Lista localStorage: " + cat);
         **/
-        localStorage.setItem(argID, booleano);
-         
-        /**
-         * === Breve repaso del LocalStorage ===
-         * 
-         * localStorage.setItem('miGato', 'Juan');          ==> Accedemos al objeto local y agrega un item al mismo
-         * 
-         * var cat = localStorage.getItem('miGato');        ==> Leemos el item almacenado
-         * 
-         * localStorage.removeItem('miGato');               ==> Eliminamos un item almacenado en localStorage
-         * 
-         * localStorage.clear();                            ==> Eliminamos todos los items almacenados
-         */
-
         
     }
 

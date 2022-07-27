@@ -15,7 +15,6 @@ export default class BookmarksComponent extends Component {
     const argID = this.args.id;
     const booleano = true;
     this.isGreen = !this.isGreen;
-
     console.log("Button State [isGreen]: " + this.isGreen);
 
 
