@@ -26,11 +26,11 @@ export default class BookmarksService extends Service {
     loadID(){        
         console.log("=== SERVICES === [loadID]"); 
         console.log("... You're using loadID service ");
-        console.log("El JSON tiene las siguientes viviendas" + myObj);
         console.log("Dame la lista " + localStorage.getItem("miLista"));
-
-
-
-        
+        const favoritos = localStorage.getItem("miLista");
+        if(favoritos !==null){
+            console.log(favoritos);
+            /* renderizaFavoritos(); */
+        }
     }
 }
