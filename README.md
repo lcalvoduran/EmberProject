@@ -32,17 +32,17 @@ Objeto ==>
   STATE: 
 }
 2) Click en marcador 
-localStorage ==> {'grand-old-mansion', 'true'}
 ... saveID()
 Objeto ==> 
 {
   ID: 'grand-old-mansion',
   STATE: 'true',
 }
+localStorage ==> {'grand-old-mansion', 'true'}
+
+
 
 3) Click en marcador (again)
-localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
-... saveID()
 Objeto ==> 
 {
   ID: 'grand-old-mansion',
@@ -52,10 +52,19 @@ Objeto ==>
   ID: 'urban-living',
   STATE: 'true'
 }
+localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
+... saveID()
+
 
 4) Reinicio de página
-localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
 ... loadID()
+Objeto ==> 
+{ 
+  ID: 
+  STATE: 
+}
+localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
+
 Objeto ==> 
 { 
   ID: 

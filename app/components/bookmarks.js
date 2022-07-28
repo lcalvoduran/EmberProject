@@ -19,7 +19,7 @@ export default class BookmarksComponent extends Component {
 
 
     //Llamada a la función del servicio "bookmarks"
-    this.bookmarks.loadID(argID, booleano);
+    this.bookmarks.loadID();
     this.bookmarks.saveID(argID, booleano);
     
     
