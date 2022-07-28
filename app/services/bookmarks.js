@@ -22,8 +22,6 @@ constructor(){
 
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
-        
-        
         this.myArray.push({ID: argID, STATE: booleano});
         console.log(this.myArray);
         //Guardar la lista en el localStorage
@@ -38,16 +36,33 @@ constructor(){
         
         console.log("=== SERVICES === [loadID]"); 
         console.log("... Downloading content ");
-        let local = localStorage.getItem("miLista");
-        if (local == null) {
-            console.log("localStorage vacío");
+        let varLocal = localStorage.getItem("miLista");
+    
+        if(varLocal == null){            
             this.myArray = [];
+            console.log("Contenido inexistente, inicializamos array vacío" + this.myArray);
+        }else{            
+            this.myArray = [];
+            const arr = JSON.parse(localStorage.getItem('miLista'));
+            this.myArray.push(arr);
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
             console.log(this.myArray);
-            
-        }else{
-            return localStorage.getItem("miLista");
         }
-        
-        
     }
 }
+        /**
+        if (local == null) {
+            console.log("Contenido INEXISTENTE en localStorage");
+            this.myArray = [];
+            
+            
+        }else{
+            console.log("EXISTE contenido en localStorage");
+            const arr = JSON.parse(localStorage.getItem('miLista'));
+            console.log("Arr: " + arr);
+            this.myArray.push(arr);
+            return localStorage.getItem("miLista");            
+        }
+        
+         **/
+ 
