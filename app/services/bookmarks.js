@@ -33,19 +33,19 @@ constructor(){
     loadID(){   
         
         console.log("=== SERVICES === [loadID]"); 
-        console.log("... Downloading content ");
         let varLocal = localStorage.getItem("miLista");
     
         if(varLocal == null){            
             this.myArray = [];
-            console.log("Contenido inexistente, inicializamos array vacío" + this.myArray);
+            console.log("Contenido inexistente, inicializamos array vacío");
         }else{            
-            this.myArray = [];
+            //this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista'));
-            this.myArray.concat(arr);
-            console.log(arr);
-            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
+            //this.myArray.concat(arr);
+            this.myArray = [...this.myArray, ...arr];
             console.log(this.myArray);
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
+            
         }
     }
 }
