@@ -23,10 +23,8 @@ constructor(){
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
         this.myArray.push({ID: argID, STATE: booleano});
-        console.log(this.myArray);
         //Guardar la lista en el localStorage
         localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
-
 
     }
 
@@ -44,6 +42,7 @@ constructor(){
             console.log(arr);
             console.log(this.myArray);
             this.myArray = [...this.myArray, ...arr];
+            console.log("Mis cojones gordos");
             console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
             
