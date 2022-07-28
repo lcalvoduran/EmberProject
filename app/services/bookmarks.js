@@ -27,9 +27,7 @@ constructor(){
         //Guardar la lista en el localStorage
         localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
 
-        // setid objeto vale nulo lo inicializa a array vacio
-        
-        // en el load le inicializo variable con array vacio
+
     }
 
     loadID(){   
@@ -50,19 +48,5 @@ constructor(){
         }
     }
 }
-        /**
-        if (local == null) {
-            console.log("Contenido INEXISTENTE en localStorage");
-            this.myArray = [];
-            
-            
-        }else{
-            console.log("EXISTE contenido en localStorage");
-            const arr = JSON.parse(localStorage.getItem('miLista'));
-            console.log("Arr: " + arr);
-            this.myArray.push(arr);
-            return localStorage.getItem("miLista");            
-        }
-        
-         **/
+
  
