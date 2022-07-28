@@ -37,12 +37,10 @@ export default class BookmarksService extends Service {
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
         //this.myObj.push({ID: argID, STATE: booleano});
         //Guardar la lista en el localStorage
-        localStorage.setItem("miLista", myObj);
-               
+        localStorage.setItem("miLista", myObj);          
     }
-   
 
-    loadID(){   
+    loadID(argID, booleano){   
         
         console.log("=== SERVICES === [loadID]"); 
         console.log("... You're using loadID service ");
