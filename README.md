@@ -25,7 +25,7 @@ Ejemplo:
 1) Estamos con el localStorage vacío
 
 localStorage ==> {}
-... loadId()
+... loadID()
 Objeto ==> 
 { 
   ID: 
@@ -33,6 +33,7 @@ Objeto ==>
 }
 2) Click en marcador 
 localStorage ==> {'grand-old-mansion', 'true'}
+... saveID()
 Objeto ==> 
 {
   ID: 'grand-old-mansion',
@@ -41,6 +42,7 @@ Objeto ==>
 
 3) Click en marcador (again)
 localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
+... saveID()
 Objeto ==> 
 {
   ID: 'grand-old-mansion',
