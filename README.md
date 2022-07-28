@@ -19,57 +19,7 @@ El de guardar va a escribir el estado del favorito de una vivienda.
 - **IN PROGRESS** 
 
 Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
-- En el servicio tener una lista de objetos {id, estado} y rellenarla con lo que haya en el localStorage en el constructor. A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
-Ejemplo: 
-
-1) Estamos con el localStorage vacío
-
-localStorage ==> {}
-... loadID()
-Objeto ==> 
-{ 
-  ID: 
-  STATE: 
-}
-2) Click en marcador 
-... saveID()
-Objeto ==> 
-{
-  ID: 'grand-old-mansion',
-  STATE: 'true',
-}
-localStorage ==> {'grand-old-mansion', 'true'}
-
-
-
-3) Click en marcador (again)
-Objeto ==> 
-{
-  ID: 'grand-old-mansion',
-  STATE: 'true'
-},
-{
-  ID: 'urban-living',
-  STATE: 'true'
-}
-localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
-... saveID()
-
-
-4) Reinicio de página
-... loadID()
-Objeto ==> 
-{ 
-  ID: 
-  STATE: 
-}
-localStorage ==> {'grand-old-mansion', 'true' | 'urban-living', 'true'}
-
-Objeto ==> 
-{ 
-  ID: 
-  STATE: 
-}
+- (Creo que ~~done~~) En el servicio tener una lista de objetos {id, estado} y rellenarla con lo que haya en el localStorage en el constructor. A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
 
 - El de cargar va a leer del localStorage el objeto 'favourites', que es un json que contiene las ids de cada vivienda junto con un boolean que dice si se selecciono como favorita o no. Hay que hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
