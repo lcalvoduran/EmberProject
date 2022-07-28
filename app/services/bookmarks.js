@@ -39,9 +39,10 @@ constructor(){
             this.myArray = [];
             console.log("Contenido inexistente, inicializamos array vacío");
         }else{            
-            //this.myArray = [];
+            this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista'));
-            //this.myArray.concat(arr);
+            console.log(arr);
+            console.log(this.myArray);
             this.myArray = [...this.myArray, ...arr];
             console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
