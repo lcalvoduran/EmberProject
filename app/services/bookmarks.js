@@ -42,7 +42,8 @@ constructor(){
         }else{            
             this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista'));
-            this.myArray.push(arr);
+            this.myArray.concat(arr);
+            console.log(arr);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");
             console.log(this.myArray);
         }
