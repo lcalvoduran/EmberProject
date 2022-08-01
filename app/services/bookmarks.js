@@ -45,10 +45,14 @@ constructor(){
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");   
             
             console.log("Vamos a filtrar el array para ver cuales hay en 'true'");
-            var arrayFiltered =  this.myArray.filter(function(filtrado) {
-                return filtrado.state == "true";
-              });
-            console.log(arrayFiltered);                    
+
+            //Filtramos los que estén en true
+            var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
+            console.log(arrayFiltered);             
+            const idList = arrayFiltered.map(({id})=> id);
+            //Obtenemos el id de los que están en true
+            console.log(idList);
+               
           
         }
     }
