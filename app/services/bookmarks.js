@@ -42,17 +42,18 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log(this.myArray);
-            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");   
-            
-            console.log("Vamos a filtrar el array para ver cuales hay en 'true'");
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");                           
 
+            /**
             //Filtramos los que estén en true
             var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
-            console.log(arrayFiltered);             
+            //console.log(arrayFiltered);          
+            //Obtenemos el id de los que están en true   
             const idList = arrayFiltered.map(({id})=> id);
-            //Obtenemos el id de los que están en true
             console.log(idList);
-               
+            const elem = document.getElementById(idList);
+            console.log(elem);
+             */
           
         }
     }
@@ -60,7 +61,14 @@ constructor(){
     watchState(){
         
         console.log(" === SERVICES === [watchSTATE]");
-
+            //Filtramos los que estén en true
+            var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
+            //console.log(arrayFiltered);          
+            //Obtenemos el id de los que están en true   
+            const idList = arrayFiltered.map(({id})=> id);
+            console.log(idList);
+            const elem = document.getElementById(idList);
+            console.log(elem);
         
 
     }
