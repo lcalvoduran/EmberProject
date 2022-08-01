@@ -1,4 +1,4 @@
-<div class="bookmarks" {{on "load" this.checkReload}}>
+<div class="bookmarks">
 
     {{#if this.isRed}}
         <button
@@ -8,10 +8,12 @@
             class="imagebutton" {{on "click" this.useService}}>    
             <small>📕</small>
         </button>
+         
         <button
             class = "imagebutton" {{on "click" this.checkReload}}>
             Reload
-        </button> 
+        </button>        
+        
     {{else}}
         <button
             ...attributes 
@@ -20,9 +22,11 @@
             class="imagebutton" {{on "click" this.useService}}>
             <small>📗</small>
         </button>
+        
         <button
             class = "imagebutton" {{on "click" this.checkReload}}>
             Reload
         </button>        
+         
     {{/if}}
 </div>

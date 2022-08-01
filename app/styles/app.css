@@ -256,6 +256,14 @@ p {
   z-index: 1;
 }
 
+.rental button.imagebutton2 {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: pink;
+  z-index: 1;
+}
+
 .rental button.image:focus {
   outline: none;
 }

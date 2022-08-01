@@ -20,7 +20,10 @@ export default class BookmarksComponent extends Component {
     this.bookmarks.loadID();
     this.bookmarks.saveID(argID, booleano);
   }
+
+  
   @action checkReload(){
+    
     this.bookmarks.watchState();
     this.isRed = true;
 

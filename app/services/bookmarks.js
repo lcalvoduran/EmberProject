@@ -44,20 +44,21 @@ constructor(){
             console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");                           
 
-            /**
+            
             //Filtramos los que estén en true
             var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
             //console.log(arrayFiltered);          
             //Obtenemos el id de los que están en true   
             const idList = arrayFiltered.map(({id})=> id);
-            console.log(idList);
-            const elem = document.getElementById(idList);
+            console.log("El estado de la ID: " + idList + " es true");
+            const elem = document.getElementById(idList).className = "imagebutton2";
             console.log(elem);
-             */
+             
           
         }
     }
 
+    // CREADO COMO AUXILIAR (NO EN USO)
     watchState(){
         
         console.log(" === SERVICES === [watchSTATE]");
@@ -67,7 +68,8 @@ constructor(){
             //Obtenemos el id de los que están en true   
             const idList = arrayFiltered.map(({id})=> id);
             console.log(idList);
-            const elem = document.getElementById(idList);
+
+            const elem = document.getElementById(idList).className = "imagebutton2";
             console.log(elem);
         
 
