@@ -22,7 +22,7 @@ constructor(){
 
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);
-        this.myArray.push({ID: argID, STATE: booleano});
+        this.myArray.push({id: argID, state: booleano});
         //Guardar la lista en el localStorage
         localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
 
@@ -42,7 +42,13 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log(this.myArray);
-            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");          
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");   
+            
+            console.log("Vamos a filtrar el array para ver cuales hay en 'true'");
+            var arrayFiltered =  this.myArray.filter(function(filtrado) {
+                return filtrado.state == "true";
+              });
+            console.log(arrayFiltered);                    
           
         }
     }
@@ -50,9 +56,7 @@ constructor(){
     watchState(){
         
         console.log(" === SERVICES === [watchSTATE]");
-        
-        const IDes = this.myArray.filter(ID => ID.STATE ==='true');
-    
+
         
 
     }
