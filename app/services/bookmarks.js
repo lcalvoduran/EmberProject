@@ -41,24 +41,17 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
-            console.log(this.myArray);
-            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");                           
-
-            
-            //Filtramos los que estén en true
-            var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
-            //console.log(arrayFiltered);          
-            //Obtenemos el id de los que están en true   
-            const idList = arrayFiltered.map(({id})=> id);
-            console.log("El estado de la ID: " + idList + " es true");
-            const elem = document.getElementById(idList).className = "imagebutton2";
-            console.log(elem);
-             
-          
+            //console.log(this.myArray);
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
+            // Cogemos las IDS
+            const idList = this.myArray.map(({id})=> id);
+            const popeado = idList.pop();
+            document.getElementById(popeado).className = "imagebutton2";                        
         }
     }
 
     // CREADO COMO AUXILIAR (NO EN USO)
+    /**
     watchState(){
         
         console.log(" === SERVICES === [watchSTATE]");
@@ -74,6 +67,7 @@ constructor(){
         
 
     }
+     **/
 }
 
  
