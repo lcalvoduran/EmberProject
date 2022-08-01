@@ -1,20 +1,28 @@
-<div class="bookmarks">
-    
+<div class="bookmarks" {{on "load" this.checkReload}}>
+
     {{#if this.isRed}}
         <button
             ...attributes
             type="button" 
             id = {{@id}}
-            class="image" {{on "click" this.useService}}>    
+            class="imagebutton" {{on "click" this.useService}}>    
             <small>📕</small>
         </button>
+        <button
+            class = "imagebutton" {{on "click" this.checkReload}}>
+            Reload
+        </button> 
     {{else}}
         <button
             ...attributes 
             type="button" 
             id = {{@id}}
-            class="image" {{on "click" this.useService}}>
+            class="imagebutton" {{on "click" this.useService}}>
             <small>📗</small>
         </button>
+        <button
+            class = "imagebutton" {{on "click" this.checkReload}}>
+            Reload
+        </button>        
     {{/if}}
 </div>

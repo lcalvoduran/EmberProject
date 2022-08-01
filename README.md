@@ -23,6 +23,12 @@ Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas
 
 - El de cargar va a leer del localStorage el objeto 'favourites', que es un json que contiene las ids de cada vivienda junto con un boolean que dice si se selecciono como favorita o no. Hay que hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
+Explanation:
+
+Dentro del component bookmark:
+1. Lee el estado llamando al servicio
+2. Actualizar la variable que hace que cambie el icono de acuerdo al estado que has leído.
+
 
 ## Prerequisites
 

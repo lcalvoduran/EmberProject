@@ -43,8 +43,18 @@ constructor(){
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");          
-            
+          
         }
+    }
+
+    watchState(){
+        
+        console.log(" === SERVICES === [watchSTATE]");
+        
+        const IDes = this.myArray.filter(ID => ID.STATE ==='true');
+    
+        
+
     }
 }
 

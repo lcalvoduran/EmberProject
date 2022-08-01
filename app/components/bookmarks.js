@@ -3,8 +3,6 @@ import Component from '@glimmer/component';
 import {service} from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import RentalImageComponent from './rental/image';
-
 
 export default class BookmarksComponent extends Component {
   //Llamamos al servicio que utilizaremos, mi servicio se llama "bookmarks" 
@@ -21,11 +19,10 @@ export default class BookmarksComponent extends Component {
     //Llamada a la función del servicio "bookmarks"
     this.bookmarks.loadID();
     this.bookmarks.saveID(argID, booleano);
-    
-    
-
-
-    
-
   }
+  @action checkReload(){
+    
+    this.bookmarks.watchState();
+  }
+
 }
