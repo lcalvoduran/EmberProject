@@ -5,15 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import RentalImageComponent from './rental/image';
 
-var favorites = localStorage.getItem("miLista");
-var arrayFavorites = JSON.parse(localStorage.getItem('miLista'));
-if (favorites.search("STATE: true")){
-  console.log("True");
-  console.log(arrayFavorites);
-  console.log("Obtencion valores");
-  console.log(Object.values(arrayFavorites));
-}
-
 
 export default class BookmarksComponent extends Component {
   //Llamamos al servicio que utilizaremos, mi servicio se llama "bookmarks" 

@@ -42,7 +42,8 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log(this.myArray);
-            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");            
+            console.log("Contenido existente, cargamos en array lo que hubiese en localStorage");          
+            
         }
     }
 }
