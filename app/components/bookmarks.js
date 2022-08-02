@@ -10,15 +10,14 @@ export default class BookmarksComponent extends Component {
   @tracked isRed = false;
 
   constructor(){
-    super(...arguments);           
+    super(...arguments);      
+    
   }
-  loadedID(){
-    if(super.loadID){
-      super.loadID(...arguments);
-    }else{
-    console.log("LoadID not charged");
-    }
-  }
+  /**
+ get isGreen(){
+    return this.bookmarks.loadID('myArray').some((object) => {object.id === this.args.id});
+ }
+  */
 
   //Accedemos a nuestro argumento mediante this.args.id, sin embargo como seguramente lleguemos a trackear esta ID la guardamos aqui
   //El action que me pide el component 
