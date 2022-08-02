@@ -11,7 +11,7 @@ export default class BookmarksComponent extends Component {
 
   constructor(){
     super(...arguments);
-    this.miID = this.bookmarks.loadID();    
+    this.myFilter = this.bookmarks.filtrado();    
   }
   /**
  get isGreen(){
@@ -27,9 +27,7 @@ export default class BookmarksComponent extends Component {
     this.isRed = !this.isRed;
     console.log("Button State [isRed]: " + this.isRed);
 
-    //Llamada a la función del servicio "bookmarks"
-    //this.bookmarks.loadID();
-   
+    //Llamada a la función del servicio "bookmarks" 
     this.bookmarks.saveID(argID, booleano);
   }
 
