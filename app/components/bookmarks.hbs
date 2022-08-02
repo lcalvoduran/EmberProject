@@ -7,12 +7,7 @@
             id = {{@id}}
             class="imagebutton" {{on "click" this.useService}}>    
             <small>📕</small>
-        </button>       
-        <button
-            class = "imagebutton" {{on "click" this.checkReload}}>
-            Reload
-        </button>        
-        
+        </button>
         
     {{else}}
         <button
@@ -21,12 +16,6 @@
             id = {{@id}}
             class="imagebutton" {{on "click" this.useService}}>
             <small>📗</small>
-        </button>       
-        <button
-            class = "imagebutton" {{on "click" this.checkReload}}>
-            Reload
-        </button>        
-        
-         
+        </button>
     {{/if}}
 </div>
