@@ -10,8 +10,8 @@ export default class BookmarksComponent extends Component {
   @tracked isRed = false;
 
   constructor(){
-    super(...arguments);      
-    
+    super(...arguments);
+    this.miID = this.bookmarks.loadID();    
   }
   /**
  get isGreen(){
