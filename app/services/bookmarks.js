@@ -46,7 +46,7 @@ constructor(){
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
             const popeado = idList.pop();
-            document.getElementById(popeado).className = "imagebutton2";                        
+            //document.getElementById(popeado).className = "imagebutton2";                        
         }
     }
 
@@ -62,9 +62,9 @@ constructor(){
             const idList = this.myArray.map(({id})=> id);
             console.log(idList);
             for (let index = 0; index < idList.length+2; index++) {
-                const popeado = idList.shift();
-                console.log(popeado);
-                const elem = document.getElementById(popeado).className = "imagebutton2";
+                const shifteado = idList.shift();
+                console.log(shifteado);
+                const elem = document.getElementById(shifteado).className = "imagebutton2";
                 console.log(idList);                
             }
             
