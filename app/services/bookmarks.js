@@ -51,11 +51,24 @@ constructor(){
     }
 
     // CREADO COMO AUXILIAR (NO EN USO)
-    /**
-    watchState(){
+    
+    loadAll(){
         
         console.log(" === SERVICES === [watchSTATE]");
             //Filtramos los que estén en true
+            this.myArray = [];
+            const arr = JSON.parse(localStorage.getItem('miLista'));
+            this.myArray = [...this.myArray, ...arr];
+            const idList = this.myArray.map(({id})=> id);
+            console.log(idList);
+            for (let index = 0; index < idList.length+2; index++) {
+                const popeado = idList.shift();
+                console.log(popeado);
+                const elem = document.getElementById(popeado).className = "imagebutton2";
+                console.log(idList);                
+            }
+            
+            /**
             var arrayFiltered = this.myArray.filter(filtrado => filtrado.state == true);
             //console.log(arrayFiltered);          
             //Obtenemos el id de los que están en true   
@@ -64,10 +77,11 @@ constructor(){
 
             const elem = document.getElementById(idList).className = "imagebutton2";
             console.log(elem);
+             */            
         
 
     }
-     **/
+     
 }
 
  
