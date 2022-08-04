@@ -37,6 +37,26 @@
         "description": "A commuters dream. This rental is within walking distance of 2 bus stops and the Metro."
       }
     },
+
+    {
+      "type": "rentals",
+      "id": "ocean-five",
+      "attributes": {
+        "title": "Ocean Five",
+        "owner": "Mike Teavee",
+        "city": "Seattle",
+        "location": {
+          "x": 4,
+          "y": 3,
+          "z": 5
+        },
+        "category": "Condo",
+        "bedrooms": 1,
+        "image": "https://hips.hearstapps.com/hbu.h-cdn.co/assets/16/43/640x426/gallery-1477500272-overwater-bungalows.jpg?resize=980:*",
+        "description": "A commuters dream. This rental is within walking distance of 2 bus stops and the Metro."
+      }
+    },    
+    
     {
       "type": "rentals",
       "id": "downtown-charm",

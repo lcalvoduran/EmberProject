@@ -66,8 +66,14 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)       
             const result = this.myArray.filter(filtrado => filtrado.state == true);
+            /* const listaDeIDs = result.map(({id})=> id); */
             if(result){
-                return true;
+                //console.log(result);
+                for (let i = 0; i < result.length; i++) {
+                    const unicaID = (result[i].id);
+                    console.log(typeof unicaID);                    
+                }                                
+                return true;                
             }else{
                 return false;
             }
