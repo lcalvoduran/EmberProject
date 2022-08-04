@@ -62,11 +62,22 @@ constructor(){
             this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
-                                                      //(eso si, es más slower que el concat nativo de toda la vida)        
+                                                      //(eso si, es más slower que el concat nativo de toda la vida)       
+            const result = this.myArray.filter(filtrado => filtrado.state == true);
+            if(result){
+                //console.log(result);
+                return true;
+            }else{
+                return false;
+            }
+            
+                
+            /**
             var arrayFiltered = this.myArray.filter(function(filtrado) {
                 console.log("true");
                 return filtrado.state == true;
             });
+             */
 
         }
 
