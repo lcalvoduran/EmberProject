@@ -26,6 +26,7 @@ constructor(){
         //Guardar la lista en el localStorage
         localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
 
+
     }
 
     loadID(){   
@@ -52,6 +53,7 @@ constructor(){
 
     filtrado(){
         console.log("==== FILTRADO ====");
+        debugger;        
         let varLocal = localStorage.getItem("miLista");
         if(varLocal == null){            
             this.myArray = [];
@@ -65,20 +67,11 @@ constructor(){
                                                       //(eso si, es más slower que el concat nativo de toda la vida)       
             const result = this.myArray.filter(filtrado => filtrado.state == true);
             if(result){
-                //console.log(result);
                 return true;
             }else{
                 return false;
             }
             
-                
-            /**
-            var arrayFiltered = this.myArray.filter(function(filtrado) {
-                console.log("true");
-                return filtrado.state == true;
-            });
-             */
-
         }
 
     }
