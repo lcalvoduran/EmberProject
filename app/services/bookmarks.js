@@ -1,6 +1,6 @@
 
 import Service from '@ember/service';
-
+import { tracked } from '@glimmer/tracking';
 
 export default class BookmarksService extends Service {
 
@@ -8,6 +8,7 @@ export default class BookmarksService extends Service {
 //constructor. 
 //A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
 myArray = [];
+
 constructor(){
     super();
     this.myArray = this.loadID();
@@ -52,8 +53,7 @@ constructor(){
     }
 
     filtrado(){
-        console.log("==== FILTRADO ====");
-        debugger;        
+        console.log("==== FILTRADO ====");                  
         let varLocal = localStorage.getItem("miLista");
         if(varLocal == null){            
             this.myArray = [];
@@ -66,13 +66,10 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)       
             const result = this.myArray.filter(filtrado => filtrado.state == true);
-            /* const listaDeIDs = result.map(({id})=> id); */
-            if(result){
-                //console.log(result);
-                for (let i = 0; i < result.length; i++) {
-                    const unicaID = (result[i].id);
-                    console.log(typeof unicaID);                    
-                }                                
+            const idUnica = result.map(({id})=> id);
+            console.log(idUnica);
+            
+            if(result){                                     
                 return true;                
             }else{
                 return false;

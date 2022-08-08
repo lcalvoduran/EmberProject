@@ -19,14 +19,14 @@ El de guardar va a escribir el estado del favorito de una vivienda.
 - **IN PROGRESS** 
 
 Hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
-- (Creo que ~~done~~) En el servicio tener una lista de objetos {id, estado} y rellenarla con lo que haya en el localStorage en el constructor. A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
+- (~~DONE~~) En el servicio tener una lista de objetos {id, estado} y rellenarla con lo que haya en el localStorage en el constructor. A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
 
 - El de cargar va a leer del localStorage el objeto 'favourites', que es un json que contiene las ids de cada vivienda junto con un boolean que dice si se selecciono como favorita o no. Hay que hacer el codigo del localStorage y ver que el estado se guarda y cuando recargas la pagina los botones de favorito estan en el estado que los dejaste
 
 Explanation:
 
 Dentro del component bookmark:
-1. Lee el estado llamando al servicio
+1. Lee el estado llamando al servicio  ~~Done~~ >> Leemos el servicio con nuestro método "filtrado()" que nos devuelve true o false.
 2. Actualizar la variable que hace que cambie el icono de acuerdo al estado que has leído.
 
 
