@@ -31,25 +31,17 @@ export default class BookmarksComponent extends Component {
     this.bookmarks.saveID(argID, booleano);
   }
 
-
-  @action checkReload(){
-    
-    this.bookmarks.loadAll();
-    this.isRed = true;
-
-  }
-
   filtrameYMarca(){
 
       const argID = this.args.id;
-      console.log("argID: " + argID);
-      console.log("metodofiltrado: " +this.bookmarks.filtrado());
+      //console.log("argID: " + argID);
+      //console.log("metodofiltrado: " +this.bookmarks.filtrado());
       if (argID == this.bookmarks.filtrado()){
         this.isRed = true;
-        return console.log("sí es coincidente");          
+        //return console.log("sí es coincidente");        
       }else{
         this.isRed = false;
-        return console.log("no es coincidente");
+        //return console.log("no es coincidente");
       }
   }
 

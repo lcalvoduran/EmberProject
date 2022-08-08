@@ -43,13 +43,15 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
+            //console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
             const popeado = idList.pop();
-             
+            //document.getElementById(popeado).className = "imagebutton2";                        
         }
     }
+
 
 
     filtrado(){
@@ -66,31 +68,11 @@ constructor(){
                                                       //(eso si, es más slower que el concat nativo de toda la vida)       
             const result = this.myArray.filter(filtrado => filtrado.state == true);
             const idUnica = result.map(({id})=> id);
-            const iterador = idUnica.values();
-            console.log(iterador.next().value);
-            return iterador.next().value;
-            
+            const iterador = idUnica.values();                       
+            return iterador.next().value;            
         }
-    }    
+    }       
 
-    // CREADO COMO AUXILIAR (NO EN USO)
-    
-    loadAll(){
-        
-        console.log(" === SERVICES === [watchSTATE]");
-            //Filtramos los que estén en true
-            this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista'));
-            this.myArray = [...this.myArray, ...arr];
-            const idList = this.myArray.map(({id})=> id);
-            console.log(idList);
-            for (let index = 0; index < idList.length+2; index++) {
-                const shifteado = idList.shift();
-                console.log(shifteado);
-                const elem = document.getElementById(shifteado).className = "imagebutton2";
-                console.log(idList);                
-            }
-    }
 
 
 }
