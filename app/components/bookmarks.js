@@ -51,9 +51,6 @@ export default class BookmarksComponent extends Component {
         this.isRed = false;
         return console.log("no es coincidente");
       }
-      
-    
-    //return console.log(this.isRed +"Devuelve estado: "+this.bookmarks.filtrado());
   }
 
   
