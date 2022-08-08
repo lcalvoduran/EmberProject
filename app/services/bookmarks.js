@@ -52,13 +52,12 @@ constructor(){
         }
     }
 
-    filtrado(){
+/*     filtrado(){
         console.log("==== FILTRADO ====");                  
         let varLocal = localStorage.getItem("miLista");
         if(varLocal == null){            
             this.myArray = [];
-            console.log("Contenido inexistente, inicializamos array vacío");
-            console.log("false");
+            console.log("Contenido inexistente, inicializamos array vacío");            
             return false;
         }else{            
             this.myArray = [];
@@ -76,8 +75,28 @@ constructor(){
             }
             
         }
+    } */
 
-    }
+
+    filtrado(){
+        console.log("==== FILTRADO ====");                  
+        let varLocal = localStorage.getItem("miLista");
+        if(varLocal == null){            
+            this.myArray = [];
+            console.log("Contenido inexistente, inicializamos array vacío");            
+            return false;
+        }else{            
+            this.myArray = [];
+            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
+            this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
+                                                      //(eso si, es más slower que el concat nativo de toda la vida)       
+            const result = this.myArray.filter(filtrado => filtrado.state == true);
+            const idUnica = result.map(({id})=> id);
+            const iterador = idUnica.values();
+            return iterador.next().value;
+            
+        }
+    }    
 
     // CREADO COMO AUXILIAR (NO EN USO)
     

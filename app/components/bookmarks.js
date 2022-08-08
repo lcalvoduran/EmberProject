@@ -11,7 +11,7 @@ export default class BookmarksComponent extends Component {
 
     constructor(){
       super(...arguments);
-      this.myFilter = this.bookmarks.filtrado();     
+      this.myFilter = this.filtrameYMarca();
       //¿Por qué me hace el filtrado 3 veces? Porque en el template index.hbs le estoy pasando el forEach y le estoy diciendo que me imprima cada lista por lo tanto si va a pintar los 3 
       //y le digo que también haga un filtrado pues me lo va a pasar el filtrado 3 veces, por lo tanto la opción podría ser crearme un componente rentalListing al que le pase el filtro y 
       //luego dentro del rental le hago el forEach 
@@ -37,6 +37,23 @@ export default class BookmarksComponent extends Component {
     this.bookmarks.loadAll();
     this.isRed = true;
 
+  }
+
+  filtrameYMarca(){
+
+      const argID = this.args.id;
+      console.log("argID: " + argID);
+      console.log("metodofiltrado: " +this.bookmarks.filtrado());
+      if (argID == this.bookmarks.filtrado()){
+        this.isRed = true;
+        return console.log("sí es coincidente");          
+      }else{
+        this.isRed = false;
+        return console.log("no es coincidente");
+      }
+      
+    
+    //return console.log(this.isRed +"Devuelve estado: "+this.bookmarks.filtrado());
   }
 
   
