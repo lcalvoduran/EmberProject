@@ -43,39 +43,13 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
-            //console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
             const popeado = idList.pop();
-            //document.getElementById(popeado).className = "imagebutton2";                        
+             
         }
     }
-
-/*     filtrado(){
-        console.log("==== FILTRADO ====");                  
-        let varLocal = localStorage.getItem("miLista");
-        if(varLocal == null){            
-            this.myArray = [];
-            console.log("Contenido inexistente, inicializamos array vacío");            
-            return false;
-        }else{            
-            this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
-            this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
-                                                      //(eso si, es más slower que el concat nativo de toda la vida)       
-            const result = this.myArray.filter(filtrado => filtrado.state == true);
-            const idUnica = result.map(({id})=> id);
-            console.log(idUnica);
-            
-            if(result){                                     
-                return true;                
-            }else{
-                return false;
-            }
-            
-        }
-    } */
 
 
     filtrado(){
@@ -93,6 +67,7 @@ constructor(){
             const result = this.myArray.filter(filtrado => filtrado.state == true);
             const idUnica = result.map(({id})=> id);
             const iterador = idUnica.values();
+            console.log(iterador.next().value);
             return iterador.next().value;
             
         }
