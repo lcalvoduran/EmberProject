@@ -29,6 +29,10 @@ Dentro del component bookmark:
 1. Lee el estado llamando al servicio  ~~Done~~ >> Leemos el servicio con nuestro método "filtrado()" que nos devuelve true o false.
 2. Actualizar la variable que hace que cambie el icono de acuerdo al estado que has leído.
 
+    Ya tengo el método "filtrado()" que me lee y me dice si hay algunas en true,esto me dice que hay algunas a true, por lo tanto solo me quedaría cambiar la variable
+    "isRed" a true o a false ¿**depende de lo que haya en ese filtrado**?. ¿Me tendría que hacer un método dentro de ese constructor que me recoja todas las que están a "true"
+    y cambiarle la variable isRed?
+
 
 ## Prerequisites
 
