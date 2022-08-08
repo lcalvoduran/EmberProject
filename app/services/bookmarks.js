@@ -19,7 +19,7 @@ constructor(){
     //======> 2 Métodos dentro del servicio 
 
     // -> SAVE: Que guarde algo e imprima algo
-    saveID(argID, booleano){   
+    saveBookmark(argID, booleano){   
 
         console.log("=== SERVICES === [saveID]"); 
         console.log("... ID: [" + argID + "] [State]: "+ booleano);

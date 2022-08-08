@@ -28,7 +28,7 @@ export default class BookmarksComponent extends Component {
     console.log("Button State [isRed]: " + this.isRed);
 
     //Llamada a la función del servicio "bookmarks" 
-    this.bookmarks.saveID(argID, booleano);
+    this.bookmarks.saveBookmark(argID, booleano);
   }
 
   filtrameYMarca(){
