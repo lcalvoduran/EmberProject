@@ -43,13 +43,12 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
-            console.log(arr);
+            //onsole.log(arr);
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
             const popeado = idList.pop();                          
         }
     }
-
 
 
 /*     filtrado(){
@@ -66,14 +65,44 @@ constructor(){
                                                       //(eso si, es más slower que el concat nativo de toda la vida)       
             const result = this.myArray.filter(filtrado => filtrado.state == true);
             const idUnica = result.map(({id})=> id);
+                   
             const iterador = idUnica.values();                       
-            return iterador.next().value;            
+            return iterador.next().value;
+            
         }
-    }      */  
+    }    */ 
 
-    filtrado(argID){
-        console.log("... ID: [" + argID + "] [State]: "+ booleano);
-    }         
+     filtrado(argID){
+        //"El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
+        console.log("==== FILTRADO ====");   
+        console.log("... ID: [" + argID + "]");               
+        let varLocal = localStorage.getItem("miLista");
+        if(varLocal == null){            
+            this.myArray = [];
+            console.log("Filtrado no ha encontrado nada. 💀");            
+            return false;
+        }else{                             
+            this.myArray = [];
+            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
+            this.myArray = [...this.myArray, ...arr];
+            console.log(this.myArray.state);
+            const resultado = this.myArray.filter(filtrado => filtrado.id == argID)
+            if(resultado == argID){
+                console.log("Filtrado ha encontrado. ⭐"); 
+                return true;
+            }else{
+                console.log("Filtrado no ha encontrado nada. 💀");
+                return false;
+            }               
+                  
+            
+         
+        }
+    }        
+
+/*     filtrado(argID){
+        console.log("... ID: [" + argID + "]");
+    }     */     
 
 
 
