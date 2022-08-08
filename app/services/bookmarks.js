@@ -43,6 +43,7 @@ constructor(){
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
+            console.log(arr);
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
             const popeado = idList.pop();                          
@@ -51,7 +52,7 @@ constructor(){
 
 
 
-    filtrado(){
+/*     filtrado(){
         console.log("==== FILTRADO ====");                  
         let varLocal = localStorage.getItem("miLista");
         if(varLocal == null){            
@@ -68,7 +69,11 @@ constructor(){
             const iterador = idUnica.values();                       
             return iterador.next().value;            
         }
-    }       
+    }      */  
+
+    filtrado(argID){
+        console.log("... ID: [" + argID + "] [State]: "+ booleano);
+    }         
 
 
 

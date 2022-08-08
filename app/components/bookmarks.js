@@ -34,14 +34,11 @@ export default class BookmarksComponent extends Component {
   filtrameYMarca(){
 
       const argID = this.args.id;
-      //console.log("argID: " + argID);
-      //console.log("metodofiltrado: " +this.bookmarks.filtrado());
-      if (argID == this.bookmarks.filtrado()){
-        this.isRed = true;
-        //return console.log("sí es coincidente");        
+      if (argID == this.bookmarks.filtrado(argID)){
+        this.isRed = true;       
       }else{
         this.isRed = false;
-        //return console.log("no es coincidente");
+
       }
   }
 
