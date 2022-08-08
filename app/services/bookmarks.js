@@ -11,7 +11,7 @@ myArray = [];
 
 constructor(){
     super();
-    this.myArray = this.loadID();
+    this.myArray = this.loadAllBookmarks();
     
 }
 
@@ -30,9 +30,8 @@ constructor(){
 
     }
 
-    loadID(){   
-        
-        console.log("=== SERVICES === [loadID]"); 
+    loadAllBookmarks(){           
+        console.log("=== SERVICES === [loadAllBookmarks]"); 
         let varLocal = localStorage.getItem("miLista");
     
         if(varLocal == null){            
@@ -43,12 +42,10 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
                                                       //(eso si, es más slower que el concat nativo de toda la vida)
-            //console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             // Cogemos las IDS
             const idList = this.myArray.map(({id})=> id);
-            const popeado = idList.pop();
-            //document.getElementById(popeado).className = "imagebutton2";                        
+            const popeado = idList.pop();                          
         }
     }
 
