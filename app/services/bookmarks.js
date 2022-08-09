@@ -63,14 +63,30 @@ constructor(){
             this.myArray = [];                        
             return false;
         }else{ 
-            try {        
-            this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
-            this.myArray = [...this.myArray, ...arr];   
-            const result = this.myArray.filter(estado => estado.id == argID); //Filtro por la id que ha recibido
-            const retorno = result[this.contador].state;
-            console.log(result[this.contador].state);
-            return retorno;  
+                try {        
+                this.myArray = [];
+                const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
+                this.myArray = [...this.myArray, ...arr];   
+            
+                /**
+                const result = this.myArray.filter(estado => estado.id == argID); //Filtro por la id que ha recibido
+                const retorno = result[this.contador].state;
+                console.log(result[this.contador].state);
+                return retorno;  
+                **/
+            
+                let arrayFiltered = this.myArray.filter(function(estado){
+                    return estado.id == argID;
+                });
+                var result = false;
+
+                    for (let i = 0; i < arrayFiltered.length; i++) { 
+                        var result = arrayFiltered[0].state;
+                    }                           
+ 
+                console.log(result);
+            return result;
+
             }
             catch(err) {
                 console.log("El array no tiene un length más grande que: "+ this.myArray.length);
