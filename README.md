@@ -30,6 +30,7 @@ Dentro del component bookmark:
 2. Actualizar la variable que hace que cambie el icono de acuerdo al estado que has leído.
 
       "El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
+      "El metodo que se te pide tiene que coger una id y filtrar el array para devolver el booleano asociado a esa id, solo eso"
 
 
 ## Prerequisites

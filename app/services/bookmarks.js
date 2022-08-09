@@ -49,69 +49,35 @@ constructor(){
             const popeado = idList.pop();                          
         }
     }
-
-/* 
-     filtrado(argID){
-        //"El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
-        console.log("==== FILTRADO ====");   
-        console.log("... ID: [" + argID + "]");               
-        let varLocal = localStorage.getItem("miLista");
-
-        if(varLocal == null){            
-            this.myArray = [];
-            console.log("Filtrado no ha encontrado nada. 💀");            
-            return false;
-        }else{                             
-            this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
-            this.myArray = [...this.myArray, ...arr];
-            console.log(this.contador);
-            const resultado = this.myArray[this.contador].id;                
-            console.log(resultado);        
-            if(resultado === argID){
-                console.log("Filtrado ha encontrado. ⭐"); 
-                this.contador++;
-                return true;
-            }else{
-                console.log("Filtrado no ha encontrado nada. 💀");                
-                return false;
-            }                                                      
-        }
-    }     */    
-
+ 
 
     filtrado(argID){
-        //"El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
         console.log("==== FILTRADO ====");   
-        console.log("... ID: [" + argID + "]");               
+        console.log("... ID: [" + argID + "]"); 
         let varLocal = localStorage.getItem("miLista");
-
+        /**
+        "El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
+        "El metodo que se te pide tiene que coger una id y filtrar el array para devolver el booleano asociado a esa id, solo eso"        
+        **/
         if(varLocal == null){            
-            this.myArray = [];
-            console.log("Filtrado no ha encontrado nada. 💀");            
+            this.myArray = [];                        
             return false;
-        }else{                 
-            try {
-                this.myArray = [];
-                const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
-                this.myArray = [...this.myArray, ...arr];
-                const resultado = this.myArray[this.contador].id;                
-                console.log(resultado);        
-                if(resultado === argID){
-                    console.log("Filtrado ha encontrado. ⭐"); 
-                    this.contador++;
-                    return true;
-                }else{
-                    console.log("Filtrado no ha encontrado nada. 💀");                
-                    return false;
-                }  
-              }
-              catch(err) {
+        }else{ 
+            try {        
+            this.myArray = [];
+            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
+            this.myArray = [...this.myArray, ...arr];   
+            const result = this.myArray.filter(estado => estado.id == argID); //Filtro por la id que ha recibido
+            const retorno = result[this.contador].state;
+            console.log(result[this.contador].state);
+            return retorno;  
+            }
+            catch(err) {
                 console.log("El array no tiene un length más grande que: "+ this.myArray.length);
-              }                        
+              }                                 
                                                     
         }
-    }        
+    }
 }
 
 
