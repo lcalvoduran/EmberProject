@@ -8,7 +8,7 @@ export default class BookmarksService extends Service {
 //constructor. 
 //A la hora de guardar añades el nuevo objeto a esa lista, y esa lista es la que escribes en el localStorage
 myArray = [];
-
+contador = 0;
 constructor(){
     super();
     this.myArray = this.loadAllBookmarks();
@@ -77,6 +77,7 @@ constructor(){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");               
         let varLocal = localStorage.getItem("miLista");
+
         if(varLocal == null){            
             this.myArray = [];
             console.log("Filtrado no ha encontrado nada. 💀");            
@@ -85,27 +86,19 @@ constructor(){
             this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
             this.myArray = [...this.myArray, ...arr];
-            console.log(this.myArray.state);
-            const resultado = this.myArray.filter(filtrado => filtrado.id == argID)
-            if(resultado == argID){
+            console.log(this.contador);
+            const resultado = this.myArray[this.contador].id;                
+            console.log(resultado);        
+            if(resultado === argID){
                 console.log("Filtrado ha encontrado. ⭐"); 
+                this.contador++;
                 return true;
             }else{
-                console.log("Filtrado no ha encontrado nada. 💀");
+                console.log("Filtrado no ha encontrado nada. 💀");                
                 return false;
-            }               
-                  
-            
-         
+            }                                                      
         }
     }        
-
-/*     filtrado(argID){
-        console.log("... ID: [" + argID + "]");
-    }     */     
-
-
-
 }
 
 
