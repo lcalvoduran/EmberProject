@@ -50,28 +50,7 @@ constructor(){
         }
     }
 
-
-/*     filtrado(){
-        console.log("==== FILTRADO ====");                  
-        let varLocal = localStorage.getItem("miLista");
-        if(varLocal == null){            
-            this.myArray = [];
-            console.log("Contenido inexistente, inicializamos array vacío");            
-            return false;
-        }else{            
-            this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
-            this.myArray = [...this.myArray, ...arr]; //El spread operator (esto que he hecho) es un concat pero más guay 
-                                                      //(eso si, es más slower que el concat nativo de toda la vida)       
-            const result = this.myArray.filter(filtrado => filtrado.state == true);
-            const idUnica = result.map(({id})=> id);
-                   
-            const iterador = idUnica.values();                       
-            return iterador.next().value;
-            
-        }
-    }    */ 
-
+/* 
      filtrado(argID){
         //"El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
         console.log("==== FILTRADO ====");   
@@ -97,6 +76,40 @@ constructor(){
                 console.log("Filtrado no ha encontrado nada. 💀");                
                 return false;
             }                                                      
+        }
+    }     */    
+
+
+    filtrado(argID){
+        //"El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
+        console.log("==== FILTRADO ====");   
+        console.log("... ID: [" + argID + "]");               
+        let varLocal = localStorage.getItem("miLista");
+
+        if(varLocal == null){            
+            this.myArray = [];
+            console.log("Filtrado no ha encontrado nada. 💀");            
+            return false;
+        }else{                 
+            try {
+                this.myArray = [];
+                const arr = JSON.parse(localStorage.getItem('miLista')); //Con esto obtendré el array
+                this.myArray = [...this.myArray, ...arr];
+                const resultado = this.myArray[this.contador].id;                
+                console.log(resultado);        
+                if(resultado === argID){
+                    console.log("Filtrado ha encontrado. ⭐"); 
+                    this.contador++;
+                    return true;
+                }else{
+                    console.log("Filtrado no ha encontrado nada. 💀");                
+                    return false;
+                }  
+              }
+              catch(err) {
+                console.log("El array no tiene un length más grande que: "+ this.myArray.length);
+              }                        
+                                                    
         }
     }        
 }
