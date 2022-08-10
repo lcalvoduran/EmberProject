@@ -34,7 +34,7 @@ export default class BookmarksComponent extends Component {
 
       const argID = this.args.id;
       const estado = this.bookmarks.filtrado(argID);
-      console.log("Estado: " + estado);
+      console.log("Objeto con estado a true: " + estado);
       if (estado){
         this.isRed = true;       
       }else{
