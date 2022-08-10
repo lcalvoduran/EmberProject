@@ -29,10 +29,13 @@ export default class BookmarksComponent extends Component {
 
   filtrameYMarca(){
 
-    //Deberia coger la ID y con el filtrado cambiarselo
+    //Deberia coger la ID y con el filtrado cambiarselo 
+    // README: Actualizar la variable que hace que cambie el icono de acuerdo al estado que has leído.
 
       const argID = this.args.id;
-      if (argID && this.bookmarks.filtrado(argID)){
+      const estado = this.bookmarks.filtrado(argID);
+      console.log("Estado: " + estado);
+      if (estado){
         this.isRed = true;       
       }else{
         this.isRed = false;

@@ -55,12 +55,12 @@ constructor(){
         //var arrayFiltered = this.myArray.filter(estado => estado.id == argID).some(elem => elem.state == true);
         
         // Con esto vamos a devolver el valor del booleano de esa ID
-        var arrayFiltered = this.myArray.filter(estado => estado.id == argID).find(estado => estado.state == true);
-        console.log(arrayFiltered.state);
-        return arrayFiltered.state;
+        //var arrayFiltered = this.myArray.filter(estado => estado.id == argID).find(estado => estado.state == true);
+        //console.log(arrayFiltered.state);
+        //return arrayFiltered.state;
 
         // (He querido envolverlo en un try/catch por los errores ya que si no encuentra en localStoragesalta)
-        /** 
+ 
         try{
             var arrayFiltered = this.myArray.filter(estado => estado.id == argID).find(estado => estado.state == true);
             console.log(arrayFiltered.state);
@@ -68,7 +68,7 @@ constructor(){
         }catch(err){
             console.log("No hay mas objetos almacenados con valor a true en el localStorage");
         }
-         **/
+
         
     }
     
