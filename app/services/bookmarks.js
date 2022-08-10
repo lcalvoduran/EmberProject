@@ -50,33 +50,12 @@ constructor(){
     filtrado(argID){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");
-        /** 1º  **/
-        // Con esto que he puesto aqui abajo me va a devolver "true" y el valor de la propiedad "state" es o "true" o "false"
-        //var arrayFiltered = this.myArray.filter(estado => estado.id == argID).some(elem => elem.state == true);
-        
-        /** 2º /*/
-        // Con esto vamos a devolver el valor del booleano de esa ID
-        //var arrayFiltered = this.myArray.filter(estado => estado.id == argID).find(estado => estado.state == true);
-        //console.log(arrayFiltered);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
-        console.log(arrayFinder.state);
-        return arrayFinder.state;
-        //var arrayFiltered = this.myArray.filter(estado => estado.id == argID);
-        //console.log(arrayFiltered);
-
-
-        /** 3º  (He querido envolverlo en un try/catch por los errores ya que si no encuentra en localStoragesalta) **/
-        /**
-        try{
-            var arrayFiltered = this.myArray.filter(estado => estado.id == argID).find(estado => estado.state == true);
-            //console.log(arrayFiltered.state);
-            return arrayFiltered.state;
-        }catch(err){
-            console.log("No hay mas objetos almacenados con valor a true en el localStorage");
+        if(arrayFinder == null){
             return false;
+        }else{
+            return arrayFinder.state;
         }
-         */
-
         
     }
     
