@@ -66,7 +66,7 @@ constructor(){
             console.log(arrayFiltered.state);
             return arrayFiltered.state;
         }catch(err){
-            console.log("No hay mas objetos almacenados en el localStorage");
+            console.log("No hay mas objetos almacenados con valor a true en el localStorage");
         }
          **/
         
