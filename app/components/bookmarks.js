@@ -28,10 +28,8 @@ export default class BookmarksComponent extends Component {
   }
 
   filtrameYMarca(){
-      this.bookmarks.filtrado(this.args.id) ? this.isRed=true : this.isRed=false;
-  }
-
-  
+      this.isRed = this.bookmarks.filtrado(this.args.id) 
+  }  
 }
 
 
