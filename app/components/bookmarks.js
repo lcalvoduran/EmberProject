@@ -18,7 +18,6 @@ export default class BookmarksComponent extends Component {
 
   //Accedemos a nuestro argumento mediante this.args.id, sin embargo como seguramente lleguemos a trackear esta ID la guardamos aqui
   //El action que me pide el component 
-  debugger;
   @action useService() {
     const argID = this.args.id;
     const booleano = true;

@@ -13,17 +13,21 @@ constructor(){
 }
     saveBookmark(argID, booleano){   
         console.log("=== SERVICES === [saveID]"); 
-        console.log("... ID: [" + argID + "] [State]: "+ booleano);
-        this.myArray.push({id: argID, state: booleano});
-        localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
-        console.log(this.myArray);
-
-
+        //console.log("... ID: [" + argID + "] [State]: "+ booleano);
+        // (IN PROGRESS) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. En caso de que exista, modificamos ese par dentro del array
+        var foundPair = this.myArray.find(estado => estado.id == argID);
+        if (foundPair) {
+            console.log("Elemento ya añadido");
+        }else{
+            console.log("Elemento NO añadido")
+            this.myArray.push({id: argID, state: booleano});
+            console.log(this.myArray[0].state);
+            localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
+        }      
     }
 
     loadAllBookmarks(){           
         console.log("=== SERVICES === [loadAllBookmarks]"); 
-        console.log(this.myArray);
         let varLocal = localStorage.getItem("miLista");
         
     
@@ -36,7 +40,6 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista'));
             this.myArray = [...this.myArray, ...arr]; 
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
-            console.log(this.myArray);
             return this.myArray;
                 
         }
@@ -46,13 +49,10 @@ constructor(){
     filtrado(argID){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");
-        console.log(this.myArray);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
         if(arrayFinder == null){
-            console.log(this.myArray);
             return false;
         }else{
-            console.log(this.myArray);
             return arrayFinder.state;
         }
         
