@@ -21,8 +21,6 @@ export default class BookmarksComponent extends Component {
   @action useService() {
     const argID = this.args.id;
     this.isRed = !this.isRed;
-    console.log("Button State [isRed]: " + this.isRed);
-
     //Llamada a la función del servicio "bookmarks" 
     this.bookmarks.saveBookmark(argID, this.isRed);
   }

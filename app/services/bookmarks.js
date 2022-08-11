@@ -21,6 +21,9 @@ constructor(){
             console.log("Ese elemento ya se añadió :(");
             console.log("El estado del botón es: " + boolean)
             //En caso de que exista, modificamos ese par dentro del array
+            console.log(foundPair);
+            foundPair.state = boolean;
+            console.log(this.myArray);            
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
