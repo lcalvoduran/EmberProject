@@ -28,10 +28,7 @@ export default class BookmarksComponent extends Component {
   }
 
   filtrameYMarca(){
-      const argID = this.args.id;
-      const estado = this.bookmarks.filtrado(argID);
-      estado ? this.isRed : !this.isRed;
-
+      this.bookmarks.filtrado(this.args.id) ? this.isRed=true : this.isRed=false;
   }
 
   
