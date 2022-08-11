@@ -21,7 +21,6 @@ constructor(){
         }else{
             console.log("Elemento NO añadido")
             this.myArray.push({id: argID, state: booleano});
-            console.log(this.myArray[0].state);
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
         }      
     }
