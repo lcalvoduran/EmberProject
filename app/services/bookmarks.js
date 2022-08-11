@@ -11,16 +11,19 @@ constructor(){
     this.loadAllBookmarks();
     
 }
-    saveBookmark(argID, booleano){   
+    saveBookmark(argID, boolean){   
         console.log("=== SERVICES === [saveID]"); 
         //console.log("... ID: [" + argID + "] [State]: "+ booleano);
-        // (IN PROGRESS) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. En caso de que exista, modificamos ese par dentro del array
+        // (IN PROGRESS) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. 
+        
         var foundPair = this.myArray.find(estado => estado.id == argID);
         if (foundPair) {
-            console.log("Elemento ya añadido");
+            console.log("Ese elemento ya se añadió :(");
+            console.log("El estado del botón es: " + boolean)
+            //En caso de que exista, modificamos ese par dentro del array
         }else{
-            console.log("Elemento NO añadido")
-            this.myArray.push({id: argID, state: booleano});
+            console.log("Se ha añadido un elemento :) ");
+            this.myArray.push({id: argID, state: boolean});
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
         }      
     }

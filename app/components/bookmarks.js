@@ -20,12 +20,11 @@ export default class BookmarksComponent extends Component {
   //El action que me pide el component 
   @action useService() {
     const argID = this.args.id;
-    const booleano = true;
     this.isRed = !this.isRed;
     console.log("Button State [isRed]: " + this.isRed);
 
     //Llamada a la función del servicio "bookmarks" 
-    this.bookmarks.saveBookmark(argID, booleano);
+    this.bookmarks.saveBookmark(argID, this.isRed);
   }
 
   filtrameYMarca(){
