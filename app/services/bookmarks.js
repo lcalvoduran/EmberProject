@@ -25,6 +25,7 @@ constructor(){
         console.log("=== SERVICES === [loadAllBookmarks]"); 
         console.log(this.myArray);
         let varLocal = localStorage.getItem("miLista");
+        
     
         if(varLocal == null){            
             this.myArray = [];
