@@ -8,22 +8,18 @@ myArray = [];
 contador = 0;
 constructor(){
     super();
-    this.loadAllBookmarks();
-    
+    this.loadAllBookmarks();    
 }
     saveBookmark(argID, boolean){   
         console.log("=== SERVICES === [saveID]"); 
-        //console.log("... ID: [" + argID + "] [State]: "+ booleano);
-        // (IN PROGRESS) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. 
-        
         var foundPair = this.myArray.find(estado => estado.id == argID);
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
             console.log("El estado del botón es: " + boolean)
-            //En caso de que exista, modificamos ese par dentro del array
             console.log(foundPair);
             foundPair.state = boolean;
-            console.log(this.myArray);            
+            console.log(this.myArray);     
+            localStorage.setItem("miLista", JSON.stringify(this.myArray));        
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
@@ -34,8 +30,6 @@ constructor(){
     loadAllBookmarks(){           
         console.log("=== SERVICES === [loadAllBookmarks]"); 
         let varLocal = localStorage.getItem("miLista");
-        
-    
         if(varLocal == null){            
             this.myArray = [];
             console.log("Contenido inexistente, inicializamos array vacío");
@@ -45,8 +39,7 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista'));
             this.myArray = [...this.myArray, ...arr]; 
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
-            return this.myArray;
-                
+            return this.myArray;   
         }
     }
  
@@ -59,8 +52,7 @@ constructor(){
             return false;
         }else{
             return arrayFinder.state;
-        }
-        
+        }   
     }
     
 }
