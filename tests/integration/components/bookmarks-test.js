@@ -36,7 +36,7 @@ module('Integration | Component | bookmarks', function (hooks) {
 
 /** ===================== ICON CHANGES ON CLICK =====================  **/
 
-test('[Bookmarks UDPATE]: Icon click', async function (assert) {
+test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
   await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
@@ -46,11 +46,11 @@ test('[Bookmarks UDPATE]: Icon click', async function (assert) {
   };
   await click('button'); // Lo convierte en 📕
   const boton = assert.dom('[test-button]');
-  boton.hasText('📕', 'El boton ahora tiene el valor 📕');
+  boton.hasText('📕', 'El button ahora tiene el valor 📕');
   assert.verifySteps([]);
   this.set('myAction', myAction);
   await click('button'); // Le pasamos otro click para que no se queje el de arriba
-  boton.hasText('📗', 'El boton ahora tiene el valor 📗');
+  boton.hasText('📗', 'El button ahora tiene el valor 📗');
   //await this.pauseTest();
  
 }); 
