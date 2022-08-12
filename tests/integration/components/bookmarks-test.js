@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
 import { render } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | bookmarks', function (hooks) {
@@ -28,6 +29,18 @@ module('Integration | Component | bookmarks', function (hooks) {
       .exists()
       .hasAttribute('id')
       .hasAttribute('id', 'grand-old-mansion');
+      let { src } = find('.bookmarks button'); //El find es un helper para encontrar elementos en el DOM
+      console.log(src);
 
   });  
+
+/** ===================== U P D A T E    T E S T S =====================  **/
+/**
+test('[Bookmarks UDPATE]: It renders a bookmark with parameters', async function (assert) {
+  await render(hbs`<Bookmarks
+  @id={{this.id}}
+  />`);
+ 
+}); 
+ */
 });
