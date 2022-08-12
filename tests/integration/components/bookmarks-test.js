@@ -51,4 +51,18 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
 /** ===================== TESTING WITH WAIT FOR AND WAIT UNTIL =====================  **/
 
+test('[Bookmarks Wait For & Wait Until tests]: Wait For', async function (assert) {
+  
+  await render(hbs`<Bookmarks
+  @id = "grand-old-mansion"
+  />`);
+
+  assert.dom('.bookmarks button').exists();
+  let {variable} = find('.bookmarks ');
+  console.log("La variable " + variable);
+  await waitFor('[id="grand-old-mansion"]');
+  assert.ok(variable, 'El elemento con ID "grand-old-mansion" existe');
+});  
+
+
 });

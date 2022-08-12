@@ -65,7 +65,7 @@ module('Integration | Component | map', function (hooks) {
     />`);
 
     let img = find('.map img');
-
+    console.log(img);
     assert.ok(
       img.src.includes('5'),
       'the src should include the lng,lat,zoom parameter'
