@@ -11,10 +11,10 @@ module('Integration | Component | bookmarks', function (hooks) {
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     // Comprobaremos que el componente se renderiza, y que ese componente que posee un botón también se renderiza correctamente.
     await render(hbs`<Bookmarks />`);
-    assert.dom(this.element).hasText('📕'); // Necesario para cuando haga el click () en vez de poner el 📗
+    assert.dom(this.element).hasText('📗'); // Necesario para cuando haga el click () en vez de poner el 📗 📕
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
-    button.hasText('📕');
+    button.hasText('📗');
     button.hasClass('imagebutton');
 
   
@@ -42,12 +42,15 @@ test('[Bookmarks UDPATE]: Icon click', async function (assert) {
   const button = assert.dom('[test-button]');
 
   let myAction = function() {
-    assert.ok("Yes");
-    //assert.step('button clicked');
+    assert.step('button clicked');
   };
-  await click('button');
+  await click('button'); // Lo convierte en 📕
+  const boton = assert.dom('[test-button]');
+  boton.hasText('📕', 'El boton ahora tiene el valor 📕');
   assert.verifySteps([]);
   this.set('myAction', myAction);
+  await click('button'); // Le pasamos otro click para que no se queje el de arriba
+  boton.hasText('📗', 'El boton ahora tiene el valor 📗');
   //await this.pauseTest();
  
 }); 
