@@ -6,23 +6,28 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | bookmarks', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders the button with type', async function (assert) {
+  test('[Bookmarks]: It renders the button with type', async function (assert) {
     // Comprobaremos que el componente se renderiza, y que ese componente que posee un botón también se renderiza correctamente.
     await render(hbs`<Bookmarks />`);
-
     assert.dom(this.element).hasText('📗');
     await render(hbs`<Bookmarks test-button/>`);
-    await this.pauseTest();
     const button = assert.dom('[test-button]');
-    button.hasText('📗')
+    button.hasText('📗');
+    button.hasClass('imagebutton');
 
-    // Template block usage:
-    await render(hbs`
-      <Bookmarks>
+  
 
-      </Bookmarks>
-    `);
-
-    //assert.dom(this.element).hasText('template block text');
   });
+  test('[Bookmarks]: It renders a bookmark with parameters', async function (assert) {
+    await render(hbs`<Bookmarks
+    @id = "grand-old-mansion"
+    />`);
+
+    assert
+      .dom('.bookmarks button')
+      .exists()
+      .hasAttribute('id')
+      .hasAttribute('id', 'grand-old-mansion');
+
+  });  
 });
