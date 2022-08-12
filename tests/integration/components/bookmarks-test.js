@@ -40,7 +40,6 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
   await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
-  
   await click('button'); // Lo convierte en 📕
   const boton = assert.dom('[test-button]');
   boton.hasText('📕', 'El button ahora tiene el valor 📕');
