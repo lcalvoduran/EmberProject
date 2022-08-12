@@ -49,19 +49,32 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
  
 }); 
 
-/** ===================== TESTING WITH WAIT FOR AND WAIT UNTIL =====================  **/
+/** ===================== Others  =====================  **/
 
-test('[Bookmarks Wait For & Wait Until tests]: Wait For', async function (assert) {
+test('[Bookmarks (Others)]: Disabling Bookmark', async function (assert) {
   
   await render(hbs`<Bookmarks
   @id = "grand-old-mansion"
-  />`);
-
+  disabled=true
+  data-test-bookmarks/>`);
+  const bookmark = assert.dom('[data-test-bookmarks]');
+  bookmark.hasAttribute('disabled');  
+  assert.ok(true, "El attribute disabled está habilitado");
   assert.dom('.bookmarks button').exists();
-  let {variable} = find('.bookmarks ');
-  console.log("La variable " + variable);
+
+});  
+
+test('[Bookmarks (Others)]: WaitFor', async function (assert) {
+  
+  await render(hbs`<Bookmarks
+  @id = "grand-old-mansion"
+  data-test-bookmarks2/>`);
+
+  const bookmark2 = assert.dom('[data-test-bookmarks2]');
+  assert.dom('.bookmarks button').exists();
+  console.log("La variable " + bookmark2);
   await waitFor('[id="grand-old-mansion"]');
-  assert.ok(variable, 'El elemento con ID "grand-old-mansion" existe');
+  //assert.ok(variable, 'El elemento con ID "grand-old-mansion" existe');
 });  
 
 
