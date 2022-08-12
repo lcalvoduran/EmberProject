@@ -11,10 +11,10 @@ module('Integration | Component | bookmarks', function (hooks) {
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     // Comprobaremos que el componente se renderiza, y que ese componente que posee un botón también se renderiza correctamente.
     await render(hbs`<Bookmarks />`);
-    assert.dom(this.element).hasText('📗');
+    assert.dom(this.element).hasText('📕'); // Necesario para cuando haga el click () en vez de poner el 📗
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
-    button.hasText('📗');
+    button.hasText('📕');
     button.hasClass('imagebutton');
 
   
@@ -34,18 +34,22 @@ module('Integration | Component | bookmarks', function (hooks) {
       assert.dom('[id="grand-old-mansion"]').exists({ count: 1 }); 
   });  
 
-/** ===================== ICONS =====================  **/
+/** ===================== ICON CHANGES ON CLICK =====================  **/
 
 test('[Bookmarks UDPATE]: Icon click', async function (assert) {
 
-  await render(hbs`<Bookmarks
-  @id = "grand-old-mansion"
-  />`);
-  assert.ok("Yes");
-  await click('button');
+  await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
-  button.hasClass('imagebutton');
-  await this.pauseTest();
+
+  let myAction = function() {
+    assert.ok("Yes");
+    //assert.step('button clicked');
+  };
+  await click('button');
+  assert.verifySteps([]);
+  this.set('myAction', myAction);
+  //await this.pauseTest();
+ 
 }); 
 
 });
