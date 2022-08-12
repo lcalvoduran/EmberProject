@@ -74,7 +74,6 @@ test('[Bookmarks (Others)]: WaitFor', async function (assert) {
   assert.dom('.bookmarks button').exists();
   console.log("La variable " + bookmark2);
   await waitFor('[id="grand-old-mansion"]');
-  //assert.ok(variable, 'El elemento con ID "grand-old-mansion" existe');
 });  
 
 
