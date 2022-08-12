@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
 import { render } from '@ember/test-helpers';
+import { click } from '@ember/test-helpers';
 import { waitFor, waitUntil} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
@@ -33,19 +34,17 @@ module('Integration | Component | bookmarks', function (hooks) {
       assert.dom('[id="grand-old-mansion"]').exists({ count: 1 }); 
   });  
 
-/** ===================== U P D A T E    T E S T S =====================  **/
+/** ===================== ICONS =====================  **/
 
-test('[Bookmarks UDPATE]: It renders a bookmark with parameters', async function (assert) {
+test('[Bookmarks UDPATE]: Icon click', async function (assert) {
+
   await render(hbs`<Bookmarks
   @id = "grand-old-mansion"
   />`);
-  let { id } = find('.bookmarks'); //El find es un helper para encontrar elementos en el DOM
-  console.log("Results: " + id);
-  await waitFor('[id="grand-old-mansion"]');
-  assert.dom('[id="grand-old-mansion"]').exists({ count: 1 });   
-
-  let finder = find('.bookmarks');
-  console.log("El finder lo ha encontrado: " + finder);
+  assert.ok("Yes");
+  await click('button');
+  const button = assert.dom('[test-button]');
+  button.hasClass('imagebutton');
   await this.pauseTest();
 }); 
 
