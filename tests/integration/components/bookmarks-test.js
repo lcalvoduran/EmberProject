@@ -40,15 +40,10 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
   await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
-
-  let myAction = function() {
-    assert.step('button clicked');
-  };
+  
   await click('button'); // Lo convierte en 📕
   const boton = assert.dom('[test-button]');
   boton.hasText('📕', 'El button ahora tiene el valor 📕');
-  assert.verifySteps([]);
-  this.set('myAction', myAction);
   await click('button'); // Le pasamos otro click para que no se queje el de arriba
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
   //await this.pauseTest();
