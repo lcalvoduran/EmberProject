@@ -79,6 +79,10 @@ test('[Bookmarks (Others)]: WaitFor', async function (assert) {
 });  
 
 /** ===================== Stub Ember Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
+
+/* En nuestro caso, tenemos que el component bookmarks hace uso de unos servicios en concreto. Para ello es posible hacer un stub de estas
+dependencias (un stub de un método es un trozo de código utilizando para sustituir alguna otra funcionalidad). Para ello utiliza la función
+incorporada de registro para registrar el servicio en un lugar predeterminado.  */
 test('[Bookmarks (Services)]: Stum Ember Services for Bookmarks', async function (assert) {
   
   await render(hbs`<Bookmarks
