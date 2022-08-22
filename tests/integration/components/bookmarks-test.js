@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
 //import BookmarkService from 'app/services/bookmark';
-import { render } from '@ember/test-helpers';
+import { render, find } from '@ember/test-helpers';
 import { click } from '@ember/test-helpers';
 import { waitFor, waitUntil} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -41,7 +41,7 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
   await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
-  let { variable } = find('.button'); //El find es un helper para encontrar elementos en el DOM
+  let { variable } = find('.bookmarks'); //El find es un helper para encontrar elementos en el DOM
   console.log("La variable CON FIND: "+ variable);  
   await click('button'); // Lo convierte en 📕
   const boton = assert.dom('[test-button]');
@@ -80,7 +80,7 @@ test('[Bookmarks (Others)]: WaitFor', async function (assert) {
 /** ===================== Stub Ember Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
                                                                           //https://guides.emberjs.com/v2.3.0/tutorial/service/
 
-/* En nuestro caso, tenemos que el component bookmarks hace uso de unos servicios en concreto. Para ello es posible hacer un stub de estas
+/* En nuestro caso, tenemos que el component bookmarks que de unos servicios en concreto. Para ello es posible hacer un stub de estas
 dependencias (un stub de un método es un trozo de código utilizando para sustituir alguna otra funcionalidad). Para ello utiliza la función
 incorporada de registro para registrar el servicio en un lugar predeterminado.  */ 
 test('[Bookmarks (Services)]: Stub Ember Services for Bookmarks', async function (assert) {
