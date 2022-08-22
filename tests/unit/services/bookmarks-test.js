@@ -20,7 +20,8 @@ module('Unit | Service | bookmarks', function (hooks) {
   });
 
   test('it creates loadBookmarks', function (assert) {
-    const response = BookmarksService.loadAllBookmarks();
+    //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadallbookamrks acceda al localstorage 
+    //(ojo hay que guardarse cositas antes en el localstorage para comprobar el test)
     assert.ok(response);
   });
 
