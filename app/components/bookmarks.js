@@ -11,10 +11,8 @@ export default class BookmarksComponent extends Component {
 
     constructor(){
       super(...arguments);
-      this.filtrameYMarca();     
-      
+      this.filtrameYMarca();           
     }
-
 
   //Accedemos a nuestro argumento mediante this.args.id, sin embargo como seguramente lleguemos a trackear esta ID la guardamos aqui
   //El action que me pide el component 
