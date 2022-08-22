@@ -1,11 +1,8 @@
-
-import Service from '@ember/service';
-import { tracked } from '@glimmer/tracking';
+import Service, { inject as service } from '@ember/service';
 
 export default class BookmarksService extends Service {
 
 myArray = [];
-contador = 0;
 constructor(){
     super();
     this.loadAllBookmarks();    
