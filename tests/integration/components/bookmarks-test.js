@@ -7,7 +7,9 @@ import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | bookmarks', function (hooks) {
   setupRenderingTest(hooks);
-
+  function toggleRed() {
+    this.set('isRed', !this.isRed);
+  }
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     // Comprobaremos que el componente se renderiza, y que ese componente que posee un botón también se renderiza correctamente.
     await render(hbs`<Bookmarks />`);
@@ -40,12 +42,13 @@ test('[Bookmarks UDPATE ICON]: Icon click', async function (assert) {
 
   await render(hbs`<Bookmarks test-button/>`);
   const button = assert.dom('[test-button]');
+  let { variable } = find('.button'); //El find es un helper para encontrar elementos en el DOM
+  console.log("La variable CON FIND: "+ variable);  
   await click('button'); // Lo convierte en 📕
   const boton = assert.dom('[test-button]');
   boton.hasText('📕', 'El button ahora tiene el valor 📕');
   await click('button'); // Le pasamos otro click para que no se queje el de arriba
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
-  //await this.pauseTest();
  
 }); 
 
@@ -69,12 +72,16 @@ test('[Bookmarks (Others)]: WaitFor', async function (assert) {
   await render(hbs`<Bookmarks
   @id = "grand-old-mansion"
   data-test-bookmarks2/>`);
-
   const bookmark2 = assert.dom('[data-test-bookmarks2]');
   assert.dom('.bookmarks button').exists();
   console.log("La variable " + bookmark2);
   await waitFor('[id="grand-old-mansion"]');
 });  
 
+/** ===================== Functions  =====================  **/
+test('[Bookmarks (Functions)]: Integrating functions for Bookmark', async function (assert) {
+  
+console.log("Hello world");
 
+}); 
 });
