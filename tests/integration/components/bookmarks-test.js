@@ -78,10 +78,13 @@ test('[Bookmarks (Others)]: WaitFor', async function (assert) {
   await waitFor('[id="grand-old-mansion"]');
 });  
 
-/** ===================== Functions  =====================  **/
-test('[Bookmarks (Functions)]: Integrating functions for Bookmark', async function (assert) {
+/** ===================== Stub Ember Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
+test('[Bookmarks (Services)]: Stum Ember Services for Bookmarks', async function (assert) {
   
-console.log("Hello world");
+  await render(hbs`<Bookmarks
+  @id = "grand-old-mansion"
+  />`);
+  assert.ok(true);
 
 }); 
 });
