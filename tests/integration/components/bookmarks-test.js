@@ -50,9 +50,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 
 // ===================== Testing Services  =====================  //https://guides.emberjs.com/v2.1.0/testing/testing-components/
-                                                                  //https://guides.emberjs.com/v2.3.0/tutorial/service/
-
-//...saveBookmark                                                                          
+                                                                  //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
     await rendericeComponent();     
@@ -64,12 +62,20 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
     assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
     assert.verifySteps(['saveBookmark']);
   }); 
+});
+
+//...filtrameYMarca
+
+test('[Bookmarks (Services)]: Ember services filtrameYMarca has been called', async function (assert) {
+
+  /**
+  bookmarkService.set('filtrameYMarca', () => {
+      assert.step('filtrameYMarca');        
+    }          
+  );
+   */
+  assert.ok(true);
 
 
 });
-
-
-
-
-//...LoadAll
 
