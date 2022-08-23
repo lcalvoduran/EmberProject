@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
-import { render, find } from '@ember/test-helpers';
+import { render, find, settled } from '@ember/test-helpers';
 import { click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
@@ -11,15 +11,11 @@ module('Integration | Component | bookmarks', function (hooks) {
   let bookmarkService;
 
   hooks.beforeEach(function () {
-    bookmarkService = this.owner.lookup('service:bookmarks'); //Llamada al servicio una vez solo al principio del test
-    //Sacaremos factor común aquí para que se no se esté llamando todo el rato para renderizar al mismo componente.
-
+    bookmarkService = this.owner.lookup('service:bookmarks'); 
   });
 
   async function rendericeComponent() {
-    return await render(hbs`<Bookmarks
-    @id = "grand-old-mansion"
-    />`);
+    return await render(hbs`<Bookmarks />`);
   }
 
   test('[Bookmarks]: It renders the button with type', async function (assert) {
@@ -39,7 +35,7 @@ module('Integration | Component | bookmarks', function (hooks) {
       .hasAttribute('id', 'grand-old-mansion');    
   });  
 
-/** ===================== ICON CHANGES ON CLICK =====================  **/
+// ===================== ICON CHANGES ON CLICK ===================== 
 
 test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async function (assert) {
   await render(hbs`<Bookmarks />`);
@@ -53,24 +49,27 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 
 
-/** ===================== Testing Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
-                                                                          //https://guides.emberjs.com/v2.3.0/tutorial/service/
+// ===================== Testing Services  =====================  //https://guides.emberjs.com/v2.1.0/testing/testing-components/
+                                                                  //https://guides.emberjs.com/v2.3.0/tutorial/service/
+
+//...saveBookmark                                                                          
 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
-    await rendericeComponent();
-    console.log(bookmarkService);
-    //console.log(bookmarkService.saveBookmark('grand-old-mansion', true));
+    await rendericeComponent();     
     bookmarkService.set('saveBookmark', () => {
-        assert.step('saveBookmark');
-        return Promise.resolve({
-          argID: 'grand-old-mansion'
-        })
-      }
+        assert.step('saveBookmark');        
+      }      
     );
-    assert.verifySteps([]);
+    await click('button');
+    assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
+    assert.verifySteps(['saveBookmark']);
   }); 
+
 
 });
 
 
+
+
+//...LoadAll
 
