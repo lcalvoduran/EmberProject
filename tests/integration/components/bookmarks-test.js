@@ -31,9 +31,9 @@ module('Integration | Component | bookmarks', function (hooks) {
 /** ===================== ICON CHANGES ON CLICK =====================  **/
 
 test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async function (assert) {
-  await render(hbs`<Bookmarks test-button/>`);
+  await render(hbs`<Bookmarks />`);
   await click('button'); 
-  const boton = assert.dom('[test-button]');
+  const boton = assert.dom('[selector="data-test"]');         //Modificación reciente para el uso de selectores colocado en nuestro .hbs
   boton.hasText('📕', 'El button ahora tiene el valor 📕');
   await click('button'); 
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
@@ -42,20 +42,18 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 
 
-/** ===================== Stub Ember Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
+/** ===================== Testing Services  =====================  **/ //https://guides.emberjs.com/v2.1.0/testing/testing-components/
                                                                           //https://guides.emberjs.com/v2.3.0/tutorial/service/
 
-/* En nuestro caso, tenemos que el component bookmarks que de unos servicios en concreto. Para ello es posible hacer un stub de estas
-dependencias (un stub de un método es un trozo de código utilizando para sustituir alguna otra funcionalidad). Para ello utiliza la función
-incorporada de registro para registrar el servicio en un lugar predeterminado.  */ 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
   
   await render(hbs`<Bookmarks
   @id = "grand-old-mansion"
   />`);
-  const bookmarkService = this.owner.lookup('service:bookmarks');
-  bookmarkService.saveBookmark = () => {
+  const bookmarkService = this.owner.lookup('service:bookmarks'); //Usamos el servicio bookmarks
+  bookmarkService.saveBookmark = () => {                          //Hacemos uso del método "saveBookmark"
     assert.step('saveBookmark');
+    
   }
   //assert.verifySteps(['saveBookmark']); Resultado esperado
   assert.verifySteps([]);

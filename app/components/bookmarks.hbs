@@ -3,6 +3,7 @@
     {{#if this.isRed}}
         <button
             ...attributes
+            selector = "data-test"
             type="button" 
             id = {{@id}}
             class="imagebutton" {{on "click" this.useService}}>    
@@ -12,6 +13,7 @@
     {{else}}
         <button
             ...attributes 
+            selector = "data-test"
             type="button" 
             id = {{@id}}
             class="imagebutton" {{on "click" this.useService}}>
