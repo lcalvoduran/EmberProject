@@ -32,7 +32,11 @@ Dentro del component bookmark:
       "El metodo de filtrar tiene que recibir una ID, buscar en el array esa ID y devolver el valor del booleano de esa ID"
       "El metodo que se te pide tiene que coger una id y filtrar el array para devolver el booleano asociado a esa id, solo eso"
 
-- (IN PROGRESS) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. En caso de que exista, modificamos ese par dentro del array. Faltaria guardar en el localStorage cuando el elemento si existe y lo has modificado, no?
+- (~~DONE~~) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. En caso de que exista, modificamos ese par dentro del array. Faltaria guardar en el localStorage cuando el elemento si existe y lo has modificado, no?~
+
+- (~~DONE~~) Testing Ember Component
+
+- (IN PROGRESS) Testing Ember Services
 
 
 ## Prerequisites

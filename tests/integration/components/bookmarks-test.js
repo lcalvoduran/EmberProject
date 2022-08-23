@@ -1,15 +1,26 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
-//import BookmarkService from 'app/services/bookmark';
 import { render, find } from '@ember/test-helpers';
 import { click } from '@ember/test-helpers';
-import { waitFor, waitUntil} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 
 module('Integration | Component | bookmarks', function (hooks) {
   setupRenderingTest(hooks);
 
+  let bookmarkService;
+
+  hooks.beforeEach(function () {
+    bookmarkService = this.owner.lookup('service:bookmarks'); //Llamada al servicio una vez solo al principio del test
+    //Sacaremos factor común aquí para que se no se esté llamando todo el rato para renderizar al mismo componente.
+
+  });
+
+  async function rendericeComponent() {
+    return await render(hbs`<Bookmarks
+    @id = "grand-old-mansion"
+    />`);
+  }
 
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
@@ -46,25 +57,20 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                           //https://guides.emberjs.com/v2.3.0/tutorial/service/
 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
-  
-  await render(hbs`<Bookmarks
-  @id = "grand-old-mansion"
-  />`);
-  const bookmarkService = this.owner.lookup('service:bookmarks'); //Buscamos el servicio bookmarks
-  assert.step('saveBookmark');
-  bookmarkService.set('saveBookmark', () =>{      
-    return Promise.resolve({
-        argID: 'data-test'
-      })      
-    })
-    assert.verifySteps(['saveBookmark']);
+    await rendericeComponent();
+    console.log(bookmarkService);
+    //console.log(bookmarkService.saveBookmark('grand-old-mansion', true));
+    bookmarkService.set('saveBookmark', () => {
+        assert.step('saveBookmark');
+        return Promise.resolve({
+          argID: 'grand-old-mansion'
+        })
+      }
+    );
+    assert.verifySteps([]);
   }); 
-  
+
 });
 
-/*   bookmarkService.saveBookmark = () => {                          //Hacemos uso del método "saveBookmark"
-    assert.step('saveBookmark');
-  }
-  assert.verifySteps([]); */
 
 
