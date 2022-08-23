@@ -50,12 +50,21 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
   await render(hbs`<Bookmarks
   @id = "grand-old-mansion"
   />`);
-  const bookmarkService = this.owner.lookup('service:bookmarks'); //Usamos el servicio bookmarks
-  bookmarkService.saveBookmark = () => {                          //Hacemos uso del método "saveBookmark"
-    assert.step('saveBookmark');
-    
-  }
-  //assert.verifySteps(['saveBookmark']); Resultado esperado
-  assert.verifySteps([]);
-}); 
+  const bookmarkService = this.owner.lookup('service:bookmarks'); //Buscamos el servicio bookmarks
+  assert.step('saveBookmark');
+  bookmarkService.set('saveBookmark', () =>{      
+    return Promise.resolve({
+        argID: 'data-test'
+      })      
+    })
+    assert.verifySteps(['saveBookmark']);
+  }); 
+  
 });
+
+/*   bookmarkService.saveBookmark = () => {                          //Hacemos uso del método "saveBookmark"
+    assert.step('saveBookmark');
+  }
+  assert.verifySteps([]); */
+
+
