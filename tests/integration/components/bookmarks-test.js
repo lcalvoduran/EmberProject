@@ -14,7 +14,6 @@ module('Integration | Component | bookmarks', function (hooks) {
       "id": "grand-old-mansion",
       "state": true
     },
-
     {
       "id": "urban-living",
       "state": true    
@@ -29,7 +28,15 @@ module('Integration | Component | bookmarks', function (hooks) {
     return await render(hbs`<Bookmarks />`);
   }
 
-/**
+  async function rendericeMockedComponent() {
+
+    return await render(hbs`<Bookmarks 
+                            @id="grand-old-mansion"/>`);    
+
+    
+  }  
+
+
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -63,7 +70,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 // ===================== Testing Services  =====================  //https://guides.emberjs.com/v2.1.0/testing/testing-components/
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
-**/
+
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
     await rendericeComponent();     
     bookmarkService.set('saveBookmark', () => {
@@ -76,22 +83,12 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
   }); 
 
 
-
-
-//...filtrameYMarca
 test('[Bookmarks (Services)]: Ember services loadAllBookmarks has been called', async function (assert) {
-  await render(hbs`<Bookmarks
-  @id = "grand-old-mansion"
-  />`);
-  bookmarkService.set('loadAllBookmarks', () => {
-    assert.step('loadAllBookmarks'); 
-    return Promise.resolve({
-      argID: 'grand-old-mansion'
-    })       
-    }      
-  );
-assert.verifySteps(['loadAllBookmarks']);
 
+      await rendericeMockedComponent();
+      await this.pauseTest();
+      assert.dom('[@id="grand-old-mansion"]');
+    
   });
  
 });
