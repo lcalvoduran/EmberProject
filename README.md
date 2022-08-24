@@ -37,9 +37,8 @@ Dentro del component bookmark:
 - (~~DONE~~) Testing Ember Component
 
 - (IN PROGRESS) Testing Ember Services
-                --> (~~DONE~~) Tested saveBookmark
-                --> (IN PROGRESS) Testing filtrameYmarca
-                --> (IN PROGRESS) Testing loadAllBookmarks
+                --> (~~DONE~~) Testing saveBookmark: Comprobar que cuando renderizamos el componente, hacemos click al botón y eso llama al servicio "saveBookmark".
+                --> (IN PROGRESS) Testing loadAllBookmarks: Comprobar que cuando recargamos la página nos ha cargado todos los marcadores. Para ello tenemos que mockear unos datos con distintos ids y comprobarlo.
 
 
 ## Prerequisites

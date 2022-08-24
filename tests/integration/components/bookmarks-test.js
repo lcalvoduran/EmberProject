@@ -17,7 +17,7 @@ module('Integration | Component | bookmarks', function (hooks) {
   async function rendericeComponent() {
     return await render(hbs`<Bookmarks />`);
   }
-
+/**
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -64,13 +64,12 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
   }); 
 });
 
+**/
+
 //...filtrameYMarca
-
-test('[Bookmarks (Services)]: Ember services filtrameYMarca has been called', async function (assert) {
-
-
-  assert.ok(true);
-
-
+test('[Bookmarks (Services)]: Ember services loadAllBookmarks has been called', async function (assert) {
+  await rendericeComponent();
+  await this.pauseTest();
+  });
 });
 
