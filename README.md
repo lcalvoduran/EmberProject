@@ -37,6 +37,9 @@ Dentro del component bookmark:
 - (~~DONE~~) Testing Ember Component
 
 - (IN PROGRESS) Testing Ember Services
+                --> (~~DONE~~) Tested saveBookmark
+                --> (IN PROGRESS) Testing filtrameYmarca
+                --> (IN PROGRESS) Testing loadAllBookmarks
 
 
 ## Prerequisites

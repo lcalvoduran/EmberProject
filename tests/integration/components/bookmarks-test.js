@@ -68,12 +68,7 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
 
 test('[Bookmarks (Services)]: Ember services filtrameYMarca has been called', async function (assert) {
 
-  /**
-  bookmarkService.set('filtrameYMarca', () => {
-      assert.step('filtrameYMarca');        
-    }          
-  );
-   */
+
   assert.ok(true);
 
 
