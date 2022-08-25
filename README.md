@@ -41,6 +41,8 @@ Dentro del component bookmark:
                 --> (IN PROGRESS) Testing loadAllBookmarks: Comprobar que cuando recargamos la página nos ha cargado todos los marcadores. Para ello tenemos que mockear unos datos con distintos ids y comprobarlo. Por lo tanto, primero tendremos que mockearnos los datos, y una vez moqueados estos simplemente llamará al localStorage, con ello podremos observar que los marcadores que estaban guardados se han cambiado de color.
 
 
+
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
