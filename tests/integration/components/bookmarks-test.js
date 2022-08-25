@@ -13,7 +13,11 @@ module('Integration | Component | bookmarks', function (hooks) {
     {
       "id": "grand-old-mansion",
       "state": true
-    }
+    },
+    {
+      "id": "urban-living",
+      "state": true
+    }    
   ];   
 
 
@@ -84,7 +88,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) { 
   await rendericeMockedComponent();
-  assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
+  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   bookmarkService.set('filtrado', () => {
     assert.step('filtrado');        
   }      
@@ -104,10 +108,6 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
     await click('button');
     assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
     assert.verifySteps(['saveBookmark']);
-  }); 
-
-
-
- 
+  });  
 });
 
