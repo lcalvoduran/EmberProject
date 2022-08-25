@@ -28,15 +28,12 @@ module('Integration | Component | bookmarks', function (hooks) {
 
   async function rendericeMockedComponent() {
     console.log("=== Renderizando component mocked");
-    await render(hbs`<Bookmarks
-    @id = "grand-old-mansion"
-    />`);
     localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
     
 
   }  
 
-
+/* 
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -64,7 +61,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
   await click('button'); 
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
  
-}); 
+});  */
 
 
 
@@ -72,7 +69,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 
-test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) {
+/* test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) {
   bookmarkService.set('filtrado', () => {
     assert.step('filtrado');        
   }      
@@ -80,8 +77,24 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called', async fu
   await rendericeMockedComponent();
   assert.verifySteps(['filtrado']);
 
-}); 
+});  */
 
+test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) { 
+  await rendericeMockedComponent();
+  await render(hbs`<Bookmarks
+  @id = "grand-old-mansion"
+  />`);   
+  bookmarkService.set('filtrado', () => {
+    assert.step('filtrado');        
+  }      
+  );   
+  await settled();
+  await render(hbs`<Bookmarks
+  @id = "grand-old-mansion"
+  />`);   
+  assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
+  assert.verifySteps(['filtrado']);   
+});  
 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
     await rendericeComponent();     
