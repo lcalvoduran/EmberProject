@@ -93,7 +93,6 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called', async fu
     assert.step('filtrado');        
   }      
   );   
-  await settled();
   await rendericeMockedComponent();
   assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
   assert.verifySteps(['filtrado']);   
