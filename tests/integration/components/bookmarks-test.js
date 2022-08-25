@@ -18,7 +18,9 @@ module('Integration | Component | bookmarks', function (hooks) {
       "id": "urban-living",
       "state": true    
     }
-  ];     
+  ];   
+
+
 
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
@@ -29,14 +31,20 @@ module('Integration | Component | bookmarks', function (hooks) {
   }
 
   async function rendericeMockedComponent() {
-
-    return await render(hbs`<Bookmarks 
-                            @id="grand-old-mansion"/>`);    
+    console.log("=== Renderizando component mocked");
+    let varLocal = localStorage.getItem("miLista");
+    let arrayMocked = [];
+    arrayMocked.push(availableBookmarks);
+    const arr = JSON.parse(varLocal);
+    arrayMocked = arrayMocked.concat(arr);
+    localStorage.setItem("miLista", JSON.stringify(arrayMocked)); 
+    console.log(localStorage);
+    await render(hbs`<Bookmarks />`);
 
     
   }  
 
-
+/**
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -66,7 +74,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
  
 }); 
 
-
+ */
 
 // ===================== Testing Services  =====================  //https://guides.emberjs.com/v2.1.0/testing/testing-components/
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
@@ -84,11 +92,14 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
 
 
 test('[Bookmarks (Services)]: Ember services loadAllBookmarks has been called', async function (assert) {
-
       await rendericeMockedComponent();
-      await this.pauseTest();
-      assert.dom('[@id="grand-old-mansion"]');
-    
+      bookmarkService.set('loadAllBookmarks', () => {
+        assert.step('loadAllBookmarks');        
+      }      
+      );
+      await settled();
+      assert.verifySteps(['loadAllBookmarks']);
+      
   });
  
 });
