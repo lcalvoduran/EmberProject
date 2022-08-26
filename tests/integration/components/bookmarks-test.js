@@ -20,8 +20,6 @@ module('Integration | Component | bookmarks', function (hooks) {
     }    
   ];   
 
-
-
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
   });
@@ -33,8 +31,7 @@ module('Integration | Component | bookmarks', function (hooks) {
   function isRed() {
     this.set('isRed', this.isRed);
   }
-
-
+/**
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -87,9 +84,9 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called and button
   assert.verifySteps(['filtrado']);
   localStorage.clear();
 });  
+ */
 
-
-test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
+test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status in localStorage', async function (assert) {
     await rendericeComponent();     
     bookmarkService.set('saveBookmark', () => {
         assert.step('saveBookmark');        
@@ -99,5 +96,22 @@ test('[Bookmarks (Services)]: Ember services saveBookmark has been called', asyn
     assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
     assert.verifySteps(['saveBookmark']);
   });  
-});
 
+/** 
+1- mockeas datos y servicios
+2- renderizas el componente
+3- actuas sobre el componente (clicks, etc)
+4- compruebas los assert
+**/
+
+test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+  assert.ok(true);
+  
+});  
+
+test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+  assert.ok(true);
+  
+});  
+
+});
