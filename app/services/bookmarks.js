@@ -48,7 +48,7 @@ constructor(){
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
         if(arrayFinder == null){
             return false;
-        }else{
+        }else{            
             return arrayFinder.state;
         }   
     }

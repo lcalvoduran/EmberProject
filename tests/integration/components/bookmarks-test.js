@@ -30,17 +30,11 @@ module('Integration | Component | bookmarks', function (hooks) {
     return await render(hbs`<Bookmarks />`);
   }
 
-  async function rendericeMockedComponent() {
-    console.log("=== Renderizando component mocked");
-    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-    await render(hbs`<Bookmarks
-    @id = "grand-old-mansion"
-    />`);     
-    
+  function isRed() {
+    this.set('isRed', this.isRed);
+  }
 
-  }  
 
-/* 
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -68,7 +62,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
   await click('button'); 
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
  
-});  */
+});
 
 
 
@@ -76,27 +70,35 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 
-/* test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) {
-  bookmarkService.set('filtrado', () => {
-    assert.step('filtrado');        
-  }      
-  );
-  await rendericeMockedComponent();
-  assert.verifySteps(['filtrado']);
-
-});  */
-
 test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) { 
-  await rendericeMockedComponent();
-  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
-  bookmarkService.set('filtrado', () => {
-    assert.step('filtrado');        
-  }      
-  );   
-  await rendericeMockedComponent();
+  localStorage.clear();
+  await render(hbs`<Bookmarks @id="grand-old-mansion"/>`);  
   assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
-  assert.verifySteps(['filtrado']);   
+  bookmarkService.set('filtrado', () => {
+    assert.step('filtrado');
+    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    return true;
+    
+  }      
+  );  
+  await render(hbs`<Bookmarks 
+                    @id="grand-old-mansion"/>`);  
+  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
+  assert.verifySteps(['filtrado']);
+  localStorage.clear();
 });  
+
+
+
+
+
+
+
+
+
+
+
+
 
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
     await rendericeComponent();     
