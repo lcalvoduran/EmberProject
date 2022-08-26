@@ -13,16 +13,33 @@ let bookmarkUtilStub = Ember.Object.extend({
 module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
+  let bookmarkService;
+  const availableBookmarks = [
+    {
+      "id": "grand-old-mansion",
+      "state": true
+    },
+    {
+      "id": "urban-living",
+      "state": true
+    }    
+  ];    
 
-  test('it exists', function (assert) {
-    let service = this.owner.lookup('service:bookmarks');
-    assert.ok(service);
+  hooks.beforeEach((function () {
+    bookmarkService = this.owner.lookup('service:bookmarks');
+  }));
+
+
+  //** ============= TESTS ============= **/
+
+  test('it exits bookmarkService', function (assert) {
+    assert.ok(bookmarkService);
   });
 
-  test('it creates loadBookmarks', function (assert) {
-    //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadallbookamrks acceda al localstorage 
+  test('it exits bookmarkService', function (assert) {
+    assert.ok(bookmarkService);
+  });
+
+    //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadAllBookmarks acceda al localstorage 
     //(ojo hay que guardarse cositas antes en el localstorage para comprobar el test)
-    assert.ok(response);
-  });
-
 });
