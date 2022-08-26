@@ -70,7 +70,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 
-test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) { 
+test('[Bookmarks (Services)]: Ember services filtrado has been called and button changed', async function (assert) { 
   localStorage.clear();
   await render(hbs`<Bookmarks 
                     @id="grand-old-mansion"/>`);  
@@ -79,7 +79,6 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called', async fu
     assert.step('filtrado');
     localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
     return true;
-    
   }      
   );  
   await render(hbs`<Bookmarks 

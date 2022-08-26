@@ -2,14 +2,6 @@ import { module, test } from 'qunit';
 import { setupTest } from 'super-rentals/tests/helpers';
 import Ember from 'ember';
 
-const DUMMY_ELEMENT = {};
-let bookmarkUtilStub = Ember.Object.extend({
-  loadAllBookmarks() {
-    this.assert.ok('Element created');
-    return DUMMY_ELEMENT;
-  }
-});
-
 module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
@@ -21,7 +13,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     },
     {
       "id": "urban-living",
-      "state": true
+      "state": false
     }    
   ];    
 
@@ -29,17 +21,53 @@ module('Unit | Service | bookmarks', function (hooks) {
     bookmarkService = this.owner.lookup('service:bookmarks');
   }));
 
+  function mockedData(){
+    localStorage.clear();
+    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+  }
+
 
   //** ============= TESTS ============= **/
+  //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadAllBookmarks acceda al localstorage 
+  //(ojo hay que guardarse cositas antes en el localstorage para comprobar el test)
 
-  test('it exits bookmarkService', function (assert) {
-    assert.ok(bookmarkService);
+  //Añadido por mi: Sabemos que el método loadAllBookmarks nos devuelve un array, pues vamos a comprobar mockeando los datos podemos observar 
+  //lo que nos va a ir devolviendo
+
+
+  test('it exits bookmarkService', async function (assert) {
+    assert.ok(true);
   });
 
-  test('it exits bookmarkService', function (assert) {
-    assert.ok(bookmarkService);
+  test('it load all Bookmarks saved in localStorage', async function (assert) {
+
+    //1. Comprobamos que se llama correctamente a loadAllBookmarks
+    let response = await bookmarkService.loadAllBookmarks();
+    assert.ok(response);                                              // Array = []
+    //2. Mockeamos los datos al localStorage
+    mockedData();                                                     // Array = [ [object, Object] [object, Object] ]
   });
 
-    //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadAllBookmarks acceda al localstorage 
-    //(ojo hay que guardarse cositas antes en el localstorage para comprobar el test)
+  test('it load the bookmarks results', async function (assert) {
+    //1. Le pasamos los datos 
+    mockedData();                                                     
+    //2. Llamamos al loadAllBookmarks
+    let response = await bookmarkService.loadAllBookmarks();          // Array = [ [object, Object] [object, Object] ]
+    assert.ok(response);
+    assert.equal(response.length, 2);                                 // la length debería de ser 2
+    assert.equal(response[0].state, true);                            // el state debería estar a "true"
+    assert.equal(response[0].id, availableBookmarks[0].id);           // true, los datos son los mismos
+    assert.equal(response.length, availableBookmarks.length);         // true, los datos tienen el mismo length
+  });  
+
+  test('it call filtrado service and return state true', async function (assert) {
+    //1. Le pasamos los datos 
+    mockedData();                                                     
+    //2. Llamamos al filtrado
+    let response = await bookmarkService.filtrado(availableBookmarks[0].id);   //true
+    assert.equal(response, true);
+  });    
+
+
+
 });
