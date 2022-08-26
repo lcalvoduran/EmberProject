@@ -72,7 +72,8 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
 
 test('[Bookmarks (Services)]: Ember services filtrado has been called', async function (assert) { 
   localStorage.clear();
-  await render(hbs`<Bookmarks @id="grand-old-mansion"/>`);  
+  await render(hbs`<Bookmarks 
+                    @id="grand-old-mansion"/>`);  
   assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
   bookmarkService.set('filtrado', () => {
     assert.step('filtrado');
