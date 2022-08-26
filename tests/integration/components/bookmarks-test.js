@@ -89,17 +89,6 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called', async fu
 });  
 
 
-
-
-
-
-
-
-
-
-
-
-
 test('[Bookmarks (Services)]: Ember services saveBookmark has been called', async function (assert) {
     await rendericeComponent();     
     bookmarkService.set('saveBookmark', () => {
