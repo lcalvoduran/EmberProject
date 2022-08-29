@@ -102,11 +102,19 @@ test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status i
     assert.verifySteps(['saveBookmark']);
   });  
 
+test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
-test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-  assert.ok(true);
-  
-});  
+  bookmarkService.set('filtrado', () => {
+    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    assert.step('filtrado');
+    return true;
+    
+  })  
+  await rendericeMockedComponent();
+  assert.verifySteps(['filtrado']);
+  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
+  });
+
 
  */
 
@@ -131,16 +139,11 @@ lo tienes apuntado en este mismo chat :)
 **/
 
 
-test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
-  bookmarkService.set('filtrado', () => {
-    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-    assert.step('filtrado');
-  })
+
+test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+  assert.ok(true);
   
-  await rendericeMockedComponent();
-  assert.verifySteps(['filtrado']);
-
-  });
+}); 
 });
-
+ 
