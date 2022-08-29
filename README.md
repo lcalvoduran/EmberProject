@@ -37,9 +37,12 @@ Dentro del component bookmark:
 - (~~DONE~~) Testing Ember Component
 
 - (IN PROGRESS) Testing Ember Services
-                --> (~~DONE~~) Testing saveBookmark: Comprobar que cuando renderizamos el componente, hacemos click al botón y eso llama al servicio "saveBookmark".
-                --> (IN PROGRESS) test('it loads and renders the initial status from BookmarkService'
-                --> (IN PROGRESS) test('it changes the status and saves it on BookmarkService when is clicked                
+            --> (~~~DONE~~)test('function saveBookmark stores the bookmark status in localStorage
+            --> (~~~DONE~~) test('function filtrado returns the requested bookmark status if it was stored in localStorage')
+            --> (IN PROGRESS) test('function loadAllBookmarks reads all the bookmarks status from localStorage')            
+
+
+             
 
 
 
