@@ -36,7 +36,7 @@ module('Integration | Component | bookmarks', function (hooks) {
     @id="grand-old-mansion"/>`);  
   }
 
-/**
+
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -116,7 +116,7 @@ test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark s
   });
 
 
- */
+
 
 /** 
 1- mockeas datos y servicios
