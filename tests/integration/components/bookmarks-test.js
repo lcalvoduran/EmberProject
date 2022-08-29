@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'super-rentals/tests/helpers';
 import { render, find, settled } from '@ember/test-helpers';
 import { click } from '@ember/test-helpers';
+import Service from '@ember/service';
 import { hbs } from 'ember-cli-htmlbars';
 
 
@@ -9,7 +10,6 @@ module('Integration | Component | bookmarks', function (hooks) {
   setupRenderingTest(hooks);
 
   let bookmarkService;
-  let bookmarkFiltrado;
   const availableBookmarks = [
     {
       "id": "grand-old-mansion",
@@ -24,8 +24,7 @@ module('Integration | Component | bookmarks', function (hooks) {
 
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
-    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-    bookmarkFiltrado = this.owner.register('service:bookmarks', bookmarkService.filtrado("grand-old-mansion"));
+    //bookmarkService.filtrado("grand-old-mansion");
   });
 
   async function rendericeComponent() {
@@ -34,7 +33,7 @@ module('Integration | Component | bookmarks', function (hooks) {
 
   async function rendericeMockedComponent() {
     return await render(hbs`<Bookmarks 
-    @id="urban-living"/>`);  
+    @id="grand-old-mansion"/>`);  
   }
 
 /**
@@ -111,23 +110,37 @@ test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks 
 
  */
 
-
-
 /** 
 1- mockeas datos y servicios
 2- renderizas el componente
 3- actuas sobre el componente (clicks, etc)
 4- compruebas los assert
+
+SI EN EL COMPONENTE USAS UN SERVICIO, MOCKEAS EL SERVICIO
+EL MOCK REEMPLAZA AL MÉTODO POR COMPLETO PARA QUE HAGA LO QUE TU QUIERAS.
+SI EN EL SERVICIO USAS LOCALSTORAGE, MOCKEAS LOCALSTORAGE
+
+no tio, si tu mockeas el metodo filtrado(), da igual lo que hiciera por dentro, por que no lo va a hacer, el mock reemplaza el metodo por 
+completo para que haga lo que tu quieras. Te lo repeti unas pocas veces
+en el servicio no has mokceado el localStorage
+simplemente lo has usado
+y eso no vale para un test, siempre hay que usar mocks para cosas que son de fuera del test
+tendrias que haber hecho como con el servicio en el test de integracion
+en este caso seria window.localStorage.set('getItem' , () => ....
+lo tienes apuntado en este mismo chat :)
 **/
 
+
 test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
-  //1. Mockeamos datos (arriba) y servicios (arriba)
-    
-  await rendericeMockedComponent();
 
-  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
+  bookmarkService.set('filtrado', () => {
+    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    assert.step('filtrado');
+  })
   
-});  
+  await rendericeMockedComponent();
+  assert.verifySteps(['filtrado']);
 
-
+  });
 });
+
