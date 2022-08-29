@@ -38,10 +38,8 @@ Dentro del component bookmark:
 
 - (IN PROGRESS) Testing Ember Services
                 --> (~~DONE~~) Testing saveBookmark: Comprobar que cuando renderizamos el componente, hacemos click al botón y eso llama al servicio "saveBookmark".
-                --> (IN PROGRESS) Testing loadAllBookmarks: Comprobar que cuando recargamos la página nos ha cargado todos los marcadores. Para ello tenemos que mockear unos datos con distintos ids y comprobarlo. Por lo tanto, primero tendremos que mockearnos los datos, y una vez moqueados estos simplemente llamará al localStorage, con ello podremos observar que los marcadores que estaban guardados se han cambiado de color.
--componente bookmarks:
--test('it loads and renders the initial status from BookmarkService'
--test('it changes the status and saves it on BookmarkService when is clicked                
+                --> (IN PROGRESS) test('it loads and renders the initial status from BookmarkService'
+                --> (IN PROGRESS) test('it changes the status and saves it on BookmarkService when is clicked                
 
 
 

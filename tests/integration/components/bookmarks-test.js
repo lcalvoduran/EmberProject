@@ -9,6 +9,7 @@ module('Integration | Component | bookmarks', function (hooks) {
   setupRenderingTest(hooks);
 
   let bookmarkService;
+  let bookmarkFiltrado;
   const availableBookmarks = [
     {
       "id": "grand-old-mansion",
@@ -18,19 +19,24 @@ module('Integration | Component | bookmarks', function (hooks) {
       "id": "urban-living",
       "state": true
     }    
-  ];   
+  ];
+  
 
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
+    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    bookmarkFiltrado = this.owner.register('service:bookmarks', bookmarkService.filtrado("grand-old-mansion"));
   });
 
   async function rendericeComponent() {
     return await render(hbs`<Bookmarks />`);
   }
 
-  function isRed() {
-    this.set('isRed', this.isRed);
+  async function rendericeMockedComponent() {
+    return await render(hbs`<Bookmarks 
+    @id="urban-living"/>`);  
   }
+
 /**
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
@@ -84,7 +90,7 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called and button
   assert.verifySteps(['filtrado']);
   localStorage.clear();
 });  
- */
+
 
 test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status in localStorage', async function (assert) {
     await rendericeComponent();     
@@ -97,6 +103,16 @@ test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status i
     assert.verifySteps(['saveBookmark']);
   });  
 
+
+test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+  assert.ok(true);
+  
+});  
+
+ */
+
+
+
 /** 
 1- mockeas datos y servicios
 2- renderizas el componente
@@ -105,13 +121,13 @@ test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status i
 **/
 
 test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
-  assert.ok(true);
+  //1. Mockeamos datos (arriba) y servicios (arriba)
+    
+  await rendericeMockedComponent();
+
+  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   
 });  
 
-test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-  assert.ok(true);
-  
-});  
 
 });
