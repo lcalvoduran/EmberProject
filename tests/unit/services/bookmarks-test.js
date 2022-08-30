@@ -45,13 +45,9 @@ module('Unit | Service | bookmarks', function (hooks) {
   test('it load all Bookmarks saved in localStorage', async function (assert) {
 
     //1. Comprobamos que se llama correctamente a loadAllBookmarks
-    //let response = await bookmarkService.loadAllBookmarks();
-    //assert.ok(response);                                              // Array = []
-    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-    window.localStorage.clear();
-    localStorage.set('soyYo', ()=> {
-      assert.ok(true);
-    });
+    let response = await bookmarkService.loadAllBookmarks();
+    assert.ok(response);                                              // Array = []
+    //window.localStorage.set('miLista', JSON.stringify(availableBookmarks);
   });
 
 });
