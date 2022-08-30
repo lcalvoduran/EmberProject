@@ -24,6 +24,7 @@ module('Integration | Component | bookmarks', function (hooks) {
 
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
+    localStorage.clear();
     //bookmarkService.filtrado("grand-old-mansion");
   });
 
@@ -31,12 +32,12 @@ module('Integration | Component | bookmarks', function (hooks) {
     return await render(hbs`<Bookmarks />`);
   }
 
-  async function rendericeMockedComponent() {
+  async function rendericeIDComponent() {
     return await render(hbs`<Bookmarks 
     @id="grand-old-mansion"/>`);  
   }
 
-/**
+
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -92,7 +93,7 @@ test('[Bookmarks (Services)]: Ember services filtrado has been called and button
 
 
 test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-    await rendericeComponent();     
+    await rendericeIDComponent();     
     bookmarkService.set('saveBookmark', () => {
         assert.step('saveBookmark');        
       }      
@@ -110,12 +111,19 @@ test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark s
     return true;
     
   })  
-  await rendericeMockedComponent();
+  await rendericeIDComponent();
   assert.verifySteps(['filtrado']);
   assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   });
 
- */
+test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+  this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
+  window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+  assert.ok(true);
+
+  });
+
+});
 
 
 /** 
@@ -139,13 +147,4 @@ lo tienes apuntado en este mismo chat :)
 **/
 
 
-
-
-test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-  this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
-  window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-  assert.ok(true);
-
-  });
-});
  
