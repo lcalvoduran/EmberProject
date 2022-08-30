@@ -39,7 +39,7 @@ Dentro del component bookmark:
 - test('it loads and renders the initial status from BookmarkService')
 - test('it changes the status and saves it on BookmarkService when is clicked)
 
- * Unit/services bookmarks (**IN RPOGRESS**)
+ * Unit/services bookmarks (**IN PROGRESS**)
 - test('function saveBookmark stores the bookmark status in localStorage)
 - test('function loadAllBookmarks reads all the bookmarks status from localStorage)
 - test('function filtrado returns the requested bookmark status if it was stored in localStorage)
