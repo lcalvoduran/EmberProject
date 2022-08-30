@@ -37,7 +37,7 @@ module('Integration | Component | bookmarks', function (hooks) {
     @id="grand-old-mansion"/>`);  
   }
 
-
+/**
   test('[Bookmarks]: It renders the button with type', async function (assert) {
     await render(hbs`<Bookmarks test-button/>`);
     const button = assert.dom('[test-button]');
@@ -115,11 +115,13 @@ test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark s
   assert.verifySteps(['filtrado']);
   assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   });
-
+**/
 test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
   this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
-  let response = window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-  assert.equal(response, bookmarkService.loadAllBookmarks());
+  window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+  let response = bookmarkService.loadAllBookmarks(); 
+  assert.deepEqual(response, availableBookmarks);
+  assert.ok(true);
 
   });
 
