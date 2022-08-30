@@ -118,8 +118,8 @@ test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark s
 
 test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
   this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
-  window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-  assert.ok(true);
+  let response = window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+  assert.equal(response, bookmarkService.loadAllBookmarks());
 
   });
 
