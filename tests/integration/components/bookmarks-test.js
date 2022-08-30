@@ -72,25 +72,6 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 
-test('[Bookmarks (Services)]: Ember services filtrado has been called and button changed', async function (assert) { 
-  localStorage.clear();
-  await render(hbs`<Bookmarks 
-                    @id="grand-old-mansion"/>`);  
-  assert.dom('[selector="data-test"]').hasText('📗', 'El botón ahora tiene el valor: 📗');
-  bookmarkService.set('filtrado', () => {
-    assert.step('filtrado');
-    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-    return true;
-  }      
-  );  
-  await render(hbs`<Bookmarks 
-                    @id="grand-old-mansion"/>`);  
-  assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
-  assert.verifySteps(['filtrado']);
-  localStorage.clear();
-});  
-
-
 test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status in localStorage', async function (assert) {
     await rendericeIDComponent();     
     bookmarkService.set('saveBookmark', () => {
@@ -105,28 +86,14 @@ test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status i
 test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
   bookmarkService.set('filtrado', () => {
-    window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    //window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
     assert.step('filtrado');
-    return true;
-    
+    return true;  
   })  
   await rendericeIDComponent();
   assert.verifySteps(['filtrado']);
   assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   });
-
-test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-  this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
-  window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-  let response = bookmarkService.loadAllBookmarks(); 
-  assert.deepEqual(response, availableBookmarks); 
-  //Optamos por deepEqual porque por defecto el .equal es un ('==') según la documentación de qUnit cuando son 
-  //iguales, pasa en caso contrario, falla. Por lo tanto, no estoy comparando el mismo objeto sino dos objetos 
-  //de la misma forma y valores. Con deepEqual ignoraremos la identidad del objeto y se comparan de forma 
-  //recursiva todas sus propiedades propias y heredadas.
-  });
-
-});
 
 
 /** 
