@@ -119,7 +119,11 @@ test('[Bookmarks (Services)]: Function loadAllBookmarks reads all the bookmarks 
   this.owner.register('service:bookmarks', bookmarkService.loadAllBookmarks());
   window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
   let response = bookmarkService.loadAllBookmarks(); 
-  assert.deepEqual(response, availableBookmarks);
+  assert.deepEqual(response, availableBookmarks); 
+  //Optamos por deepEqual porque por defecto el .equal es un ('==') según la documentación de qUnit cuando son 
+  //iguales, pasa en caso contrario, falla. Por lo tanto, no estoy comparando el mismo objeto sino dos objetos 
+  //de la misma forma y valores. Con deepEqual ignoraremos la identidad del objeto y se comparan de forma 
+  //recursiva todas sus propiedades propias y heredadas.
   });
 
 });
