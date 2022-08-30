@@ -72,7 +72,7 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
 
 
-test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+test('[Bookmarks (Services)]: it changes the status and saves it on BookmarkService when is clicked', async function (assert) {
     await rendericeIDComponent();     
     bookmarkService.set('saveBookmark', () => {
         assert.step('saveBookmark');        
@@ -83,7 +83,7 @@ test('[Bookmarks (Services)]: function saveBookmark stores the bookmark status i
     assert.verifySteps(['saveBookmark']);
   });  
 
-test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+test('[Bookmarks (Services)]: it loads and renders the initial status from BookmarkService', async function (assert) {
 
   bookmarkService.set('filtrado', () => {
     //window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
@@ -94,7 +94,7 @@ test('[Bookmarks (Services)]: Function filtrado returns the requested bookmark s
   assert.verifySteps(['filtrado']);
   assert.dom('[selector="data-test"]').hasText('📕', 'El botón ahora tiene el valor: 📕');
   });
-
+});
 
 /** 
 1- mockeas datos y servicios
