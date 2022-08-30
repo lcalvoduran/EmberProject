@@ -6,6 +6,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
   let bookmarkService;
+  let localService;
   const availableBookmarks = [
     {
       "id": "grand-old-mansion",
@@ -21,10 +22,12 @@ module('Unit | Service | bookmarks', function (hooks) {
     bookmarkService = this.owner.lookup('service:bookmarks');
   }));
 
+
   function mockedData(){
     localStorage.clear();
     localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
   }
+
 
 
   //** ============= TESTS ============= **/
@@ -40,6 +43,21 @@ module('Unit | Service | bookmarks', function (hooks) {
   });
 
   test('it load all Bookmarks saved in localStorage', async function (assert) {
+
+    //1. Comprobamos que se llama correctamente a loadAllBookmarks
+    //let response = await bookmarkService.loadAllBookmarks();
+    //assert.ok(response);                                              // Array = []
+    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+    window.localStorage.clear();
+    localStorage.set('soyYo', ()=> {
+      assert.ok(true);
+    });
+  });
+
+});
+
+/**
+   test('it load all Bookmarks saved in localStorage', async function (assert) {
 
     //1. Comprobamos que se llama correctamente a loadAllBookmarks
     let response = await bookmarkService.loadAllBookmarks();
@@ -69,5 +87,5 @@ module('Unit | Service | bookmarks', function (hooks) {
   });    
 
 
+ */
 
-});

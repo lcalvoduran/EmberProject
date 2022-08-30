@@ -25,7 +25,6 @@ module('Integration | Component | bookmarks', function (hooks) {
   hooks.beforeEach(function () {
     bookmarkService = this.owner.lookup('service:bookmarks'); 
     localStorage.clear();
-    //bookmarkService.filtrado("grand-old-mansion");
   });
 
   async function rendericeComponent() {
@@ -65,8 +64,6 @@ test('[Bookmarks UDPATE ICON]: Icon changes the value when clicked', async funct
   boton.hasText('📗', 'El button ahora tiene el valor 📗');
  
 });
-
-
 
 // ===================== Testing Services  =====================  //https://guides.emberjs.com/v2.1.0/testing/testing-components/
                                                                   //https://guides.emberjs.com/v2.3.0/tutorial/service/                                                                       
