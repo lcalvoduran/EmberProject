@@ -44,7 +44,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     mockedData();
     
     bookmarkService.set('loadAllBookmarks', () => {
-      this.set('localService', +window.localStorage.getItem('miLista'));
+      //this.set('localService', +window.localStorage.getItem('miLista'));
       assert.step('loadAllBookmarks');
     })     
     await bookmarkService.loadAllBookmarks();
