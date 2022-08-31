@@ -21,7 +21,7 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
-
+    
   }));
 
 
@@ -40,11 +40,11 @@ module('Unit | Service | bookmarks', function (hooks) {
 
 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {    
-    bookmarkService.set('loadAllBookmarks', () => {
-      window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-      window.localStorage.getItem("miLista");
-      assert.step('loadAllBookmarks');
-    })     
+    localStorage.getItem = () => {
+      assert.step('getItem')
+      const obj = {"id":"grand-old-mansion","state":true}
+      return obj
+    };
     await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['loadAllBookmarks']);
     let response = bookmarkService.loadAllBookmarks;
