@@ -36,6 +36,7 @@ constructor(){
             const arr = JSON.parse(localStorage.getItem('miLista'));
             this.myArray = [...this.myArray, ...arr]; 
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
+            //console.log(this.myArray);
             return this.myArray;   
         }
     }

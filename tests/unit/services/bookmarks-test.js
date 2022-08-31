@@ -46,8 +46,10 @@ module('Unit | Service | bookmarks', function (hooks) {
       assert.step('loadAllBookmarks');
     })     
     await bookmarkService.loadAllBookmarks();
-    await this.pauseTest();
-    assert.verifySteps(['loadAllBookmarks']); 
+    assert.verifySteps(['loadAllBookmarks']);
+    let response = bookmarkService.loadAllBookmarks;
+    assert.ok(response);;
+    
   });
 
 });
