@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'super-rentals/tests/helpers';
 import Ember from 'ember';
+import { set } from '@ember/object';
 import { settled } from '@ember/test-helpers';
 
 module('Unit | Service | bookmarks', function (hooks) {
@@ -21,7 +22,7 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
-    //localService = window.localStorage.getItem("miLista", JSON.stringify(availableBookmarks));
+    localService = window.localStorage;
   }));
 
 
@@ -38,13 +39,15 @@ module('Unit | Service | bookmarks', function (hooks) {
   //lo que nos va a ir devolviendo
 
 
+
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     //1. Comprobamos que se llama correctamente a loadAllBookmarks
+    mockedData();
+    
     bookmarkService.set('loadAllBookmarks', () => {
       assert.step('loadAllBookmarks');
-    })  
-    let response = await bookmarkService.loadAllBookmarks();
-    console.log(response);
+    })     
+    await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['loadAllBookmarks']);
 
   });
@@ -58,13 +61,14 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.ok(true);
   });
 
-   test('it load all Bookmarks saved in localStorage', async function (assert) {
-
+  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+    mockedData();
     //1. Comprobamos que se llama correctamente a loadAllBookmarks
     let response = await bookmarkService.loadAllBookmarks();
-    assert.ok(response);                                              // Array = []
+    assert.ok(response);     
+    assert.equal(response[0].state, true);                                         
     //2. Mockeamos los datos al localStorage
-    mockedData();                                                     // Array = [ [object, Object] [object, Object] ]
+                                                         // Array = [ [object, Object] [object, Object] ]
   });
 
   test('it load the bookmarks results', async function (assert) {

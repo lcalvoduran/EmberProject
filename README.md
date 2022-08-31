@@ -41,7 +41,7 @@ Dentro del component bookmark:
 
  * Unit/services bookmarks (**IN PROGRESS**)
 - test('function saveBookmark stores the bookmark status in localStorage)
-- test('function loadAllBookmarks reads all the bookmarks status from localStorage)
+- test('function loadAllBookmarks reads all the bookmarks status from localStorage) --> window.localStorage.set('getItem' , () => ....
 - test('function filtrado returns the requested bookmark status if it was stored in localStorage) 
 
 ## Prerequisites
