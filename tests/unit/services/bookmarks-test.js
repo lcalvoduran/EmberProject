@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'super-rentals/tests/helpers';
 import Ember from 'ember';
+import { settled } from '@ember/test-helpers';
 
 module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
@@ -14,12 +15,13 @@ module('Unit | Service | bookmarks', function (hooks) {
     },
     {
       "id": "urban-living",
-      "state": false
+      "state": true
     }    
   ];    
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
+    //localService = window.localStorage.getItem("miLista", JSON.stringify(availableBookmarks));
   }));
 
 
@@ -27,8 +29,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     localStorage.clear();
     localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
   }
-
-
 
   //** ============= TESTS ============= **/
   //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadAllBookmarks acceda al localstorage 
@@ -38,21 +38,26 @@ module('Unit | Service | bookmarks', function (hooks) {
   //lo que nos va a ir devolviendo
 
 
-  test('it exits bookmarkService', async function (assert) {
-    assert.ok(true);
-  });
-
-  test('it load all Bookmarks saved in localStorage', async function (assert) {
-
+  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     //1. Comprobamos que se llama correctamente a loadAllBookmarks
+    bookmarkService.set('loadAllBookmarks', () => {
+      assert.step('loadAllBookmarks');
+    })  
     let response = await bookmarkService.loadAllBookmarks();
-    assert.ok(response);                                              // Array = []
-    //window.localStorage.set('miLista', JSON.stringify(availableBookmarks);
+    console.log(response);
+    assert.verifySteps(['loadAllBookmarks']);
+
   });
 
 });
 
 /**
+  
+
+  test('it exits bookmarkService', async function (assert) {
+    assert.ok(true);
+  });
+
    test('it load all Bookmarks saved in localStorage', async function (assert) {
 
     //1. Comprobamos que se llama correctamente a loadAllBookmarks

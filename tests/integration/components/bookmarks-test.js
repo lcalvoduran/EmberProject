@@ -83,7 +83,6 @@ test('[Bookmarks (Services)]: it changes the status and saves it on BookmarkServ
 test('[Bookmarks (Services)]: it loads and renders the initial status from BookmarkService', async function (assert) {
 
   bookmarkService.set('filtrado', () => {
-    //window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
     assert.step('filtrado');
     return true;  
   })  
