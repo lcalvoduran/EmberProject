@@ -48,7 +48,11 @@ module('Unit | Service | bookmarks', function (hooks) {
       assert.step('loadAllBookmarks');
     })     
     await bookmarkService.loadAllBookmarks();
-    assert.verifySteps(['loadAllBookmarks']);
+    assert.verifySteps(['loadAllBookmarks']); 
+
+/*     window.localStorage.set('getItem', () => {
+        "miLista", JSON.stringify(availableBookmarks);
+    }) */
 
   });
 
