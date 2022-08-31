@@ -39,20 +39,15 @@ module('Unit | Service | bookmarks', function (hooks) {
 
 
 
-  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-    //1. Comprobamos que se llama correctamente a loadAllBookmarks
-    mockedData();
-    
+  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {    
     bookmarkService.set('loadAllBookmarks', () => {
-      //this.set('localService', +window.localStorage.getItem('miLista'));
+      window.localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
+      window.localStorage.getItem("miLista");
       assert.step('loadAllBookmarks');
     })     
     await bookmarkService.loadAllBookmarks();
+    await this.pauseTest();
     assert.verifySteps(['loadAllBookmarks']); 
-/*     window.localStorage.set('getItem', () => {
-        
-    })   */
-
   });
 
 });
