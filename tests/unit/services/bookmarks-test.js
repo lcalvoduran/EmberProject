@@ -49,9 +49,9 @@ module('Unit | Service | bookmarks', function (hooks) {
     })     
     await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['loadAllBookmarks']); 
-     window.localStorage.set('getItem', () => {
+/*     window.localStorage.set('getItem', () => {
         
-    })  
+    })   */
 
   });
 
