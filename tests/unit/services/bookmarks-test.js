@@ -8,7 +8,6 @@ module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
   let bookmarkService;
-  let localService;
   const availableBookmarks = [
     {
       "id": "grand-old-mansion",
@@ -22,7 +21,7 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
-    localService = window.localStorage;
+
   }));
 
 
@@ -45,14 +44,14 @@ module('Unit | Service | bookmarks', function (hooks) {
     mockedData();
     
     bookmarkService.set('loadAllBookmarks', () => {
+      this.set('localService', +window.localStorage.getItem('miLista'));
       assert.step('loadAllBookmarks');
     })     
     await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['loadAllBookmarks']); 
-
 /*     window.localStorage.set('getItem', () => {
         "miLista", JSON.stringify(availableBookmarks);
-    }) */
+    })  */
 
   });
 
@@ -87,7 +86,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response.length, availableBookmarks.length);         // true, los datos tienen el mismo length
   });  
 
-  test('it call filtrado service and return state true', async function (assert) {
+  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
     //1. Le pasamos los datos 
     mockedData();                                                     
     //2. Llamamos al filtrado
