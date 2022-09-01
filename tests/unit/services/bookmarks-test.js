@@ -74,7 +74,10 @@ module('Unit | Service | bookmarks', function (hooks) {
         "state": true
       }
     ];
-    let saveB = await bookmarkService.saveBookmark(testingID[0].id, testingID[0].state); 
+    bookmarkService.saveBookmark(testingID[0].id, testingID[0].state); 
+    localStorage.getItem = () => {
+      return '{"id": "test-id", "state": true}'
+    }
     console.log(bookmarkService.filtrado(testingID[0].id));
     let response = await bookmarkService.filtrado(testingID[0].id);
     assert.ok(response);
