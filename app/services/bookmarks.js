@@ -12,10 +12,10 @@ constructor(){
         var foundPair = this.myArray.find(estado => estado.id == argID);
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
-            console.log("El estado del botón es: " + boolean)
-            console.log(foundPair);
+            //console.log("El estado del botón es: " + boolean)
+            //console.log(foundPair);
             foundPair.state = boolean;
-            console.log(this.myArray);     
+            //console.log(this.myArray);     
             localStorage.setItem("miLista", JSON.stringify(this.myArray));        
         }else{
             console.log("Se ha añadido un elemento :) ");

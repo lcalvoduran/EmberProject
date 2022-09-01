@@ -37,16 +37,17 @@ module('Unit | Service | bookmarks', function (hooks) {
   //lo que nos va a ir devolviendo
 
  
-  test('it exits bookmarkService', async function (assert) {
+/*   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
-  });
+  }); */
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-    mockedData();
-    //1. Comprobamos que se llama correctamente a loadAllBookmarks
+ 
+    await bookmarkService.saveBookmark(availableBookmarks[0].id, availableBookmarks[0].state);
     let response = await bookmarkService.loadAllBookmarks();
     assert.ok(response);     
-    assert.equal(response[0].state, true);                                         
+    assert.equal(response[0].state, true);     
+                          
   });   
 
 
