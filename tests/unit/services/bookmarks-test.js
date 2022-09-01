@@ -24,7 +24,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     
   }));
 
-
   function mockedData(){
     localStorage.clear();
     localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
@@ -37,26 +36,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   //Añadido por mi: Sabemos que el método loadAllBookmarks nos devuelve un array, pues vamos a comprobar mockeando los datos podemos observar 
   //lo que nos va a ir devolviendo
 
-
-
-  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {    
-    localStorage.getItem = () => {
-      assert.step('getItem')
-      const obj = {"id":"grand-old-mansion","state":true}
-      return obj
-    };
-    await bookmarkService.loadAllBookmarks();
-    assert.verifySteps(['loadAllBookmarks']);
-    let response = bookmarkService.loadAllBookmarks;
-    assert.ok(response);;
-    
-  });
-
-});
-
-/**
-  
-
+ 
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
   });
@@ -67,9 +47,8 @@ module('Unit | Service | bookmarks', function (hooks) {
     let response = await bookmarkService.loadAllBookmarks();
     assert.ok(response);     
     assert.equal(response[0].state, true);                                         
-    //2. Mockeamos los datos al localStorage
-                                                         // Array = [ [object, Object] [object, Object] ]
-  });
+  });   
+
 
   test('it load the bookmarks results', async function (assert) {
     //1. Le pasamos los datos 
@@ -81,16 +60,35 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response[0].state, true);                            // el state debería estar a "true"
     assert.equal(response[0].id, availableBookmarks[0].id);           // true, los datos son los mismos
     assert.equal(response.length, availableBookmarks.length);         // true, los datos tienen el mismo length
-  });  
+  });
+  
+  test('[1] function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+    const expectedAvailableBookmarks = availableBookmarks;
+    assert.equal(expectedAvailableBookmarks[0].state, bookmarkService.filtrado(availableBookmarks[0].id));
+  });   
 
-  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
-    //1. Le pasamos los datos 
-    mockedData();                                                     
-    //2. Llamamos al filtrado
-    let response = await bookmarkService.filtrado(availableBookmarks[0].id);   //true
-    assert.equal(response, true);
+  test('[2] function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+    let testingID = [
+      {
+        "id": "test-id",
+        "state": true
+      }
+    ];
+    let saveB = await bookmarkService.saveBookmark(testingID[0].id, testingID[0].state); 
+    console.log(bookmarkService.filtrado(testingID[0].id));
+    let response = await bookmarkService.filtrado(testingID[0].id);
+    assert.ok(response);
   });    
 
+  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+    localStorage.getItem = () => {
+      assert.step('getItem');      
+      assert.verifySteps(['getItem']);
+      return '{"id": "grand-old-mansion", "state": true}'
+    }
+    await bookmarkService.loadAllBookmarks();
+    assert.ok(true);
+  });  
 
- */
 
+});
