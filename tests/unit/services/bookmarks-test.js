@@ -1,4 +1,4 @@
-import { module, push, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupTest } from 'super-rentals/tests/helpers';
 import Ember from 'ember';
 import { set } from '@ember/object';
@@ -66,6 +66,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   });  
  
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
+    
     localStorage.getItem = () => {
       assert.step('getItem');      
      
@@ -73,10 +74,12 @@ module('Unit | Service | bookmarks', function (hooks) {
     }
     await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['getItem', 'getItem']);
+    
+ 
   });  
 
 
- /**
+
  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
     let testingID = [
       {
@@ -85,16 +88,12 @@ module('Unit | Service | bookmarks', function (hooks) {
       }
     ];
     localStorage.getItem = () => {
-      assert.step('getItem');      
-     
+      assert.step('getItem');           
       return '[{"id": "test-id", "state": true}]'
     }
     await bookmarkService.loadAllBookmarks();
     let response = await bookmarkService.filtrado(testingID[0].id);
     assert.verifySteps(['getItem', 'getItem']);
     assert.ok(response, true);
-  }); 
-
- */
- 
+  });  
 });
