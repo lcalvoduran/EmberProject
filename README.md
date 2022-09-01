@@ -35,6 +35,12 @@ Dentro del component bookmark:
 - (~~DONE~~) Cuando hacemos click en un boton, guardamos el par {id, state} si no existe en el array. En caso de que exista, modificamos ese par dentro del array. Faltaria guardar en el localStorage cuando el elemento si existe y lo has modificado, no?~
 
 **Testing Ember Component**
+
+1- Mockear datos y servicios
+2- Renderizar el componente
+3- Actuar sobre el componente (clicks, etc)
+4- Comprobar los assert
+
  * Integration/components bookmarks: (~~DONE~~)
 - test('it loads and renders the initial status from BookmarkService')
 - test('it changes the status and saves it on BookmarkService when is clicked)

@@ -16,16 +16,19 @@ constructor(){
             //console.log(foundPair);
             foundPair.state = boolean;
             //console.log(this.myArray);     
-            localStorage.setItem("miLista", JSON.stringify(this.myArray));        
+            localStorage.setItem("miLista", JSON.stringify(this.myArray));  
+            console.log(localStorage);      
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
+            console.log(localStorage);
         }      
     }
 
     loadAllBookmarks(){           
         console.log("=== SERVICES === [loadAllBookmarks]"); 
+        console.log(localStorage);
         let varLocal = localStorage.getItem("miLista");
         if(varLocal == null){            
             this.myArray = [];
@@ -35,8 +38,8 @@ constructor(){
             this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista'));
             console.log(arr);
-            //this.myArray = [...this.myArray, ...arr]; 
-            this.myArray = this.myArray.concat(arr);
+            this.myArray = [...this.myArray, ...arr]; 
+            //this.myArray = this.myArray.concat(arr);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             //console.log(this.myArray);
             return this.myArray;   
