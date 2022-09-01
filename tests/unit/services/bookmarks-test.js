@@ -36,19 +36,10 @@ module('Unit | Service | bookmarks', function (hooks) {
   //Añadido por mi: Sabemos que el método loadAllBookmarks nos devuelve un array, pues vamos a comprobar mockeando los datos podemos observar 
   //lo que nos va a ir devolviendo
 
-/*  
+ 
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
   });
-
-  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
- 
-    await bookmarkService.saveBookmark(availableBookmarks[0].id, availableBookmarks[0].state);
-    let response = await bookmarkService.loadAllBookmarks();
-    assert.ok(response);     
-    assert.equal(response[0].state, true);     
-                          
-  });   
 
 
   test('it load the bookmarks results', async function (assert) {
@@ -63,7 +54,17 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response.length, availableBookmarks.length);         // true, los datos tienen el mismo length
   });
  
-  // ╙╙╙╙╙╙╙╙╙╙╙╙ DEFINITIVO ╙╙╙╙╙╙╙╙╙╙╙╙
+  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+  
+    localStorage.setItem = () => {      
+      assert.step('setItem');
+      localStorage.miLista = '[{"id": "test-id", "state": true}]';
+    }    
+    await bookmarkService.saveBookmark();    
+    assert.verifySteps(['setItem']);
+    assert.ok(true);                          
+  });  
+ 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     localStorage.getItem = () => {
       assert.step('getItem');      
@@ -75,7 +76,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   });  
 
 
-  
+ /**
  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
     let testingID = [
       {
@@ -93,19 +94,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.verifySteps(['getItem', 'getItem']);
     assert.ok(response, true);
   }); 
-*/
 
-  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-  
-    //await bookmarkService.saveBookmark(availableBookmarks[0].id, availableBookmarks[0].state);
-
-    localStorage.setItem = () => {      
-      assert.step('setItem');
-    }    
-    await bookmarkService.loadAllBookmarks();    
-    assert.verifySteps(['setItem']);
-    assert.ok(true);
-                          
-  });   
-
+ */
+ 
 });
