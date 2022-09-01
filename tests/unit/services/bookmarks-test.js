@@ -39,7 +39,7 @@ module('Unit | Service | bookmarks', function (hooks) {
  
 /*   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
-  }); */
+  });
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
  
@@ -68,7 +68,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(expectedAvailableBookmarks[0].state, bookmarkService.filtrado(availableBookmarks[0].id));
   });   
 
-  test('[2] function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+ */  test('[2] function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
     let testingID = [
       {
         "id": "test-id",
@@ -82,8 +82,10 @@ module('Unit | Service | bookmarks', function (hooks) {
     console.log(bookmarkService.filtrado(testingID[0].id));
     let response = await bookmarkService.filtrado(testingID[0].id);
     assert.ok(response);
-  });    
+    assert.equal(bookmarkService.filtrado(testingID[0].id), testingID[0].state);
 
+  });    
+/* 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     localStorage.getItem = () => {
       assert.step('getItem');      
@@ -92,7 +94,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     }
     await bookmarkService.loadAllBookmarks();
     assert.ok(true);
-  });  
+  });   */
 
 
 });
