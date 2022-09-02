@@ -28,7 +28,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.verifySteps(['setItem']);                          
   });
 
-/*   
+  
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
   }); 
@@ -60,7 +60,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response[0].id, "test-id");
   });  
 
-  */  
 
 });
 
