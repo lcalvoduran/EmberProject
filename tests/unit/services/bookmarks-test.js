@@ -8,26 +8,12 @@ module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
   let bookmarkService;
-  const availableBookmarks = [
-    {
-      "id": "grand-old-mansion",
-      "state": true
-    },
-    {
-      "id": "urban-living",
-      "state": true
-    }    
-  ];    
+
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
     
   }));
-
-  function mockedData(){
-    localStorage.clear();
-    localStorage.setItem("miLista", JSON.stringify(availableBookmarks));
-  }
 
   //** ============= TESTS ============= **/
  
@@ -74,34 +60,3 @@ module('Unit | Service | bookmarks', function (hooks) {
 
 });
 
-
-  /* 
-
-// TEST FUNCTION SAVEBOOKMARK [OLD]
-
-  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-  
-    localStorage.setItem = () => {      
-      assert.step('setItem');
-      localStorage.miLista = '[{"id": "test-id", "state": true}]';
-    }    
-    await bookmarkService.saveBookmark();    
-    assert.verifySteps(['setItem']);
-    assert.ok(true);                          
-  }); 
-
-// TEST FUNCTION FILTRADO [OLD]
-
-  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
-  
-    localStorage.setItem = () => {      
-      assert.step('setItem');
-      localStorage.miLista = '[{"id": "test-id", "state": true}]';
-    }    
-    await bookmarkService.saveBookmark();
-    await bookmarkService.filtrado("test-id");    
-    assert.verifySteps(['setItem']);
-    assert.ok(true);                          
-  });     
-
- */
