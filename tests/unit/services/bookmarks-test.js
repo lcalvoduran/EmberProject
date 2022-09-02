@@ -20,11 +20,10 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
   
-    localStorage.setItem = function (key, val) {
-      assert.step('setItem');      
-      //key = '[{"id": "test-id", "state": true}]';      
-
-    }        
+     localStorage.setItem = function (key, val) {
+      assert.step('setItem'); 
+      this[key] = val;
+    }         
     await bookmarkService.saveBookmark("test-id", true);  
     assert.verifySteps(['setItem']);                          
   });
