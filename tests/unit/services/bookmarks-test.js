@@ -36,6 +36,22 @@ module('Unit | Service | bookmarks', function (hooks) {
   //Añadido por mi: Sabemos que el método loadAllBookmarks nos devuelve un array, pues vamos a comprobar mockeando los datos podemos observar 
   //lo que nos va a ir devolviendo
 
+ 
+  test('it exits bookmarkService', async function (assert) {
+    assert.ok(true);
+  });
+
+  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+  
+    localStorage.setItem = function (key, val) {
+      assert.step('setItem');      
+      this[key] = '[{"id": "test-id", "state": true}]';
+      
+ }        
+    await bookmarkService.saveBookmark();  
+    assert.verifySteps(['setItem']);  
+    assert.ok(true);                          
+  }); 
 
   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
@@ -47,24 +63,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.verifySteps(['getItem', 'getItem']);
     let response = await bookmarkService.filtrado("test-id");    
     assert.ok(response, true);
-  });   
-
-/*   
-  test('it exits bookmarkService', async function (assert) {
-    assert.ok(true);
-  });
-
-
-  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-  
-    localStorage.setItem = () => {      
-      assert.step('setItem');
-      localStorage.miLista = '[{"id": "test-id", "state": true}]';
-    }    
-    await bookmarkService.saveBookmark();    
-    assert.verifySteps(['setItem']);
-    assert.ok(true);                          
-  }); 
+  });    
 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     
@@ -79,11 +78,25 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "grand-old-mansion");
   });      
-  */
+
 });
 
 
 /*   
+
+// TEST FUNCTION SAVEBOOKMARK [OLD]
+
+  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+  
+    localStorage.setItem = () => {      
+      assert.step('setItem');
+      localStorage.miLista = '[{"id": "test-id", "state": true}]';
+    }    
+    await bookmarkService.saveBookmark();    
+    assert.verifySteps(['setItem']);
+    assert.ok(true);                          
+  }); 
+
 // TEST FUNCTION FILTRADO [OLD]
 
   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {

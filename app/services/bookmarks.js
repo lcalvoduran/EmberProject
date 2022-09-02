@@ -10,6 +10,7 @@ constructor(){
     saveBookmark(argID, boolean){   
         console.log("=== SERVICES === [saveID]"); 
         var foundPair = this.myArray.find(estado => estado.id == argID);
+        console.log(localStorage);
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
             //console.log("El estado del botón es: " + boolean)
@@ -29,7 +30,7 @@ constructor(){
         console.log("=== SERVICES === [loadAllBookmarks]");
         //console.log(localStorage); 
         let varLocal = localStorage.getItem("miLista");
-        //console.log(varLocal);
+        console.log(varLocal);
         if(varLocal == null){            
             this.myArray = [];
             console.log("Contenido inexistente, inicializamos array vacío");
