@@ -53,7 +53,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.ok(true);                          
   }); 
 
-  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
     localStorage.getItem = () => {
       assert.step('getItem');
@@ -69,20 +69,20 @@ module('Unit | Service | bookmarks', function (hooks) {
     
     localStorage.getItem = () => {
       assert.step('getItem');           
-      return '[{"id": "grand-old-mansion", "state": true}]'
+      return '[{"id": "test-id", "state": true}]'
     }
     let response = await bookmarkService.loadAllBookmarks();
     assert.verifySteps(['getItem', 'getItem']);
     assert.ok(response);
     assert.equal(response.length, 1);
     assert.equal(response[0].state, true);  
-    assert.equal(response[0].id, "grand-old-mansion");
-  });      
+    assert.equal(response[0].id, "test-id");
+  });     
 
 });
 
 
-/*   
+  /* 
 
 // TEST FUNCTION SAVEBOOKMARK [OLD]
 
@@ -110,4 +110,5 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.verifySteps(['setItem']);
     assert.ok(true);                          
   });     
-*/ 
+
+ */
