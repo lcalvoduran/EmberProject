@@ -30,7 +30,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     await bookmarkService.saveBookmark("test-id", true);  
     assert.verifySteps(['setItem']);                          
   }); 
-/* 
+
    test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
 
     localStorage.getItem = () => {
@@ -54,6 +54,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "test-id");
   });     
- */
+
 });
 
