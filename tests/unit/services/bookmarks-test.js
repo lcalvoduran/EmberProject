@@ -30,11 +30,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   }
 
   //** ============= TESTS ============= **/
-  //Como el de arriba, hay que probar que los métodos en sí funcionen, que el loadAllBookmarks acceda al localstorage 
-  //(ojo hay que guardarse cositas antes en el localstorage para comprobar el test)
 
-  //Añadido por mi: Sabemos que el método loadAllBookmarks nos devuelve un array, pues vamos a comprobar mockeando los datos podemos observar 
-  //lo que nos va a ir devolviendo
 
  
   test('it exits bookmarkService', async function (assert) {
