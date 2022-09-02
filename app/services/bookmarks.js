@@ -26,7 +26,8 @@ constructor(){
     }
 
     loadAllBookmarks(){           
-        console.log("=== SERVICES === [loadAllBookmarks]"); 
+        console.log("=== SERVICES === [loadAllBookmarks]");
+        //console.log(localStorage); 
         let varLocal = localStorage.getItem("miLista");
         //console.log(varLocal);
         if(varLocal == null){            
@@ -46,7 +47,9 @@ constructor(){
     filtrado(argID){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");
+        //console.log(this.myArray);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
+        //console.log(arrayFinder);
         if(arrayFinder == null){
             return false;
         }else{            
