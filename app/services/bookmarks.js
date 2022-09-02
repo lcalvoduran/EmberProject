@@ -13,51 +13,48 @@ constructor(){
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
             //console.log("El estado del botón es: " + boolean)
-            //console.log(foundPair);
             foundPair.state = boolean;
             //console.log(this.myArray);     
+            //console.log(localStorage);      
             localStorage.setItem("miLista", JSON.stringify(this.myArray));  
-            console.log(localStorage);      
+            
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
-            console.log(localStorage);
+            //console.log(localStorage);
         }      
     }
 
     loadAllBookmarks(){           
         console.log("=== SERVICES === [loadAllBookmarks]"); 
-        console.log(localStorage);
         let varLocal = localStorage.getItem("miLista");
+        //console.log(varLocal);
         if(varLocal == null){            
             this.myArray = [];
             console.log("Contenido inexistente, inicializamos array vacío");
             return this.myArray;
         }else{            
             this.myArray = [];
-            const arr = JSON.parse(localStorage.getItem('miLista'));
-            console.log(arr);
+            const arr = JSON.parse(localStorage.getItem('miLista'));            
             this.myArray = [...this.myArray, ...arr]; 
-            //this.myArray = this.myArray.concat(arr);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             //console.log(this.myArray);
             return this.myArray;   
         }
     }
  
-
     filtrado(argID){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");
+        console.log(localStorage);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
         if(arrayFinder == null){
             return false;
         }else{            
             return arrayFinder.state;
         }   
-    }
-    
+    }    
 }
 
 
