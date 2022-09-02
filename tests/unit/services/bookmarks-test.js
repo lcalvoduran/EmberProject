@@ -17,29 +17,35 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   //** ============= TESTS ============= **/
  
-  test('it exits bookmarkService', async function (assert) {
-    assert.ok(true);
-  });
- 
+
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
   
     localStorage.setItem = function (key, val) {
       assert.step('setItem');      
-      key = '[{"id": "test-id", "state": true}]';      
- }        
+      //key = '[{"id": "test-id", "state": true}]';      
+
+    }        
     await bookmarkService.saveBookmark("test-id", true);  
     assert.verifySteps(['setItem']);                          
+  });
+
+/*   
+  test('it exits bookmarkService', async function (assert) {
+    assert.ok(true);
   }); 
 
-   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+ 
 
-    localStorage.getItem = () => {
-  
+  test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
+    localStorage.getItem = () => {           
       return '[{"id": "test-id", "state": true}]'
     }
+    //TENGO QUE DEJAR ESTO ASÍ. Porque nada más cargar la página no me va a leer nada con el loadAllBookmarks (Porque no hay NADA). Sin embargo
+    //cuando llega el test tiene que meterlo en localStorage, loadAllBookmarks SÍ USA localStorage, filtrado NO.
+    await bookmarkService.loadAllBookmarks(); 
     let response = await bookmarkService.filtrado("test-id");    
-    assert.ok(response, true);
-  });    
+    assert.equal(response, true);
+  }); 
 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     
@@ -53,7 +59,9 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response.length, 1);
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "test-id");
-  });     
+  });  
+
+  */  
 
 });
 

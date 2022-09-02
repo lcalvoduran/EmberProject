@@ -10,6 +10,7 @@ constructor(){
     saveBookmark(argID, boolean){   
         console.log("=== SERVICES === [saveID]"); 
         var foundPair = this.myArray.find(estado => estado.id == argID);
+        console.log(foundPair);
         console.log(localStorage);
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
@@ -22,6 +23,7 @@ constructor(){
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
+
             //console.log(localStorage);
         }      
     }
@@ -50,10 +52,9 @@ constructor(){
         console.log("... ID: [" + argID + "]");
         //console.log(this.myArray);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
-        //console.log(arrayFinder);
         if(arrayFinder == null){
             return false;
-        }else{            
+        }else{         
             return arrayFinder.state;
         }   
     }    
