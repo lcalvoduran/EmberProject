@@ -13,8 +13,7 @@ constructor(){
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
             //console.log("El estado del botón es: " + boolean)
-            foundPair.state = boolean;
-            //console.log(this.myArray);     
+            foundPair.state = boolean;    
             //console.log(localStorage);      
             localStorage.setItem("miLista", JSON.stringify(this.myArray));  
             
@@ -47,7 +46,6 @@ constructor(){
     filtrado(argID){
         console.log("==== FILTRADO ====");   
         console.log("... ID: [" + argID + "]");
-        console.log(localStorage);
         var arrayFinder = this.myArray.find(estado => estado.id == argID);
         if(arrayFinder == null){
             return false;
