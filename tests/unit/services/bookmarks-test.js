@@ -30,8 +30,6 @@ module('Unit | Service | bookmarks', function (hooks) {
   }
 
   //** ============= TESTS ============= **/
-
-
  
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
