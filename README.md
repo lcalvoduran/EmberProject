@@ -41,6 +41,10 @@ Dentro del component bookmark:
 3- Actuar sobre el componente (clicks, etc)
 4- Comprobar los assert
 
+- MOCK 
+- ACCIONES
+- ASSERTS
+
  * Integration/components bookmarks: (~~DONE~~)
 - test('it loads and renders the initial status from BookmarkService')
 - test('it changes the status and saves it on BookmarkService when is clicked)
