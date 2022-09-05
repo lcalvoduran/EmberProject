@@ -1,14 +1,11 @@
 import { module, skip, test } from 'qunit';
 import { setupTest } from 'super-rentals/tests/helpers';
-import Ember from 'ember';
-import { set } from '@ember/object';
-import { settled } from '@ember/test-helpers';
+
 
 module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
   let bookmarkService;
-  let store = {};
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
@@ -17,7 +14,6 @@ module('Unit | Service | bookmarks', function (hooks) {
 
   //** ============= TESTS ============= **/
  
-
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
   }); 
@@ -25,8 +21,6 @@ module('Unit | Service | bookmarks', function (hooks) {
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
     localStorage.setItem = function (key, value) {
       assert.step('setItem');
-      store[key] = value;
-      console.log(store[key]);
     }
     await bookmarkService.saveBookmark("test-id", true);
     assert.verifySteps(['setItem']);
@@ -41,8 +35,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response, true);
   });     
 
-  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
-    
+  test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {    
     localStorage.getItem = () => {
       assert.step('getItem');           
       return '[{"id": "test-id", "state": true}]'
@@ -53,6 +46,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response.length, 1);
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "test-id");
-  });   
+  });
 });
 

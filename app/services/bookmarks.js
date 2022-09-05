@@ -19,10 +19,7 @@ constructor(){
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
-            localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
-            //console.log(localStorage);
-            //console.log(this.myArray);
-            
+            localStorage.setItem("miLista", JSON.stringify(this.myArray));             
         }      
     }
 
