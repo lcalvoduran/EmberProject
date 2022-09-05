@@ -18,6 +18,10 @@ module('Unit | Service | bookmarks', function (hooks) {
   //** ============= TESTS ============= **/
  
 
+  test('it exits bookmarkService', async function (assert) {
+    assert.ok(true);
+  }); 
+
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
     //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después.
     localStorage.setItem = function (key, value) {
@@ -31,23 +35,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.verifySteps(['setItem']);
   });
 
-/*   
-  test('it exits bookmarkService', async function (assert) {
-    assert.ok(true);
-  }); 
-
-  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después. 
-     localStorage.setItem = function (key, value) {
-      assert.step('setItem'); 
-      key = "miLista";
-      value = "manolito gafotas";
-    }         
-    await bookmarkService.saveBookmark("test-id", true);  
-    assert.verifySteps(['setItem']);                          
-  });
- 
-
   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
     localStorage.getItem = () => {           
       return '[{"id": "test-id", "state": true}]'
@@ -57,7 +44,7 @@ module('Unit | Service | bookmarks', function (hooks) {
     await bookmarkService.loadAllBookmarks(); 
     let response = await bookmarkService.filtrado("test-id");    
     assert.equal(response, true);
-  }); 
+  });     
 
   test('function loadAllBookmarks reads all the bookmarks status from localStorage', async function (assert) {
     
@@ -72,9 +59,5 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "test-id");
   });   
-  
-  */
-
-
 });
 
