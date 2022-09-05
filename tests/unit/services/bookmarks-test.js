@@ -19,19 +19,17 @@ module('Unit | Service | bookmarks', function (hooks) {
  
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después. 
-    localStorage.setItem = function () {
+    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después.
+    localStorage.setItem = function (key, value) {
       assert.step('setItem');
-      let key = "miLista";
-      let value = '[{"id": "test-id", "state": true}]';
-      store[key] = value;      
-      console.log(store);
-
-    }         
-    await bookmarkService.saveBookmark("test-id", true);  
-    assert.verifySteps(['setItem']);                          
+      store[key] = value;
+      //console.log(key);
+      //console.log(value);
+      console.log(store[key]);
+    }
+    await bookmarkService.saveBookmark("test-id", true);
+    assert.verifySteps(['setItem']);
   });
-
 
 /*   
   test('it exits bookmarkService', async function (assert) {
@@ -43,7 +41,7 @@ module('Unit | Service | bookmarks', function (hooks) {
      localStorage.setItem = function (key, value) {
       assert.step('setItem'); 
       key = "miLista";
-      value = "manolito grifota";
+      value = "manolito gafotas";
     }         
     await bookmarkService.saveBookmark("test-id", true);  
     assert.verifySteps(['setItem']);                          
