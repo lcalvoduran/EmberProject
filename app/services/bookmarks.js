@@ -10,19 +10,17 @@ constructor(){
     saveBookmark(argID, boolean){   
         console.log("=== SERVICES === [saveID]"); 
         var foundPair = this.myArray.find(estado => estado.id == argID);
-        //console.log(foundPair);
         if (foundPair) {
             console.log("Ese elemento ya se añadió :(");
             //console.log("El estado del botón es: " + boolean)
             foundPair.state = boolean;                     
             localStorage.setItem("miLista", JSON.stringify(this.myArray));  
-            console.log(localStorage); 
             
         }else{
             console.log("Se ha añadido un elemento :) ");
             this.myArray.push({id: argID, state: boolean});
             localStorage.setItem("miLista", JSON.stringify(this.myArray)); 
-            console.log(localStorage); 
+            console.log(localStorage);
             console.log(this.myArray);
             
         }      
@@ -32,7 +30,7 @@ constructor(){
         console.log("=== SERVICES === [loadAllBookmarks]");
         //console.log(localStorage); 
         let varLocal = localStorage.getItem("miLista");
-        //console.log(varLocal);
+        console.log(varLocal);
         if(varLocal == null){            
             this.myArray = [];
             console.log("Contenido inexistente, inicializamos array vacío");
@@ -41,6 +39,7 @@ constructor(){
             this.myArray = [];
             const arr = JSON.parse(localStorage.getItem('miLista'));            
             this.myArray = [...this.myArray, ...arr]; 
+            console.log(this.myArray);
             console.log("Contenido existente, cargamos en array lo que hubiese en localStorage"); 
             //console.log(this.myArray);
             return this.myArray;   

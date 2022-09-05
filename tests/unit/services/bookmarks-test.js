@@ -8,7 +8,7 @@ module('Unit | Service | bookmarks', function (hooks) {
   setupTest(hooks);
 
   let bookmarkService;
-
+  let store = {};
 
   hooks.beforeEach((function () {
     bookmarkService = this.owner.lookup('service:bookmarks');
@@ -19,22 +19,35 @@ module('Unit | Service | bookmarks', function (hooks) {
  
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-  
-     localStorage.setItem = function () {
-      assert.step('setItem'); 
-      let store = [];
-      store = '[{"id": "test-id", "state": true}]';
+    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después. 
+    localStorage.setItem = function () {
+      assert.step('setItem');
+      let key = "miLista";
+      let value = '[{"id": "test-id", "state": true}]';
+      store[key] = value;      
       console.log(store);
+
     }         
     await bookmarkService.saveBookmark("test-id", true);  
     assert.verifySteps(['setItem']);                          
   });
 
-  /* 
+
+/*   
   test('it exits bookmarkService', async function (assert) {
     assert.ok(true);
   }); 
 
+  test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
+    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después. 
+     localStorage.setItem = function (key, value) {
+      assert.step('setItem'); 
+      key = "miLista";
+      value = "manolito grifota";
+    }         
+    await bookmarkService.saveBookmark("test-id", true);  
+    assert.verifySteps(['setItem']);                          
+  });
  
 
   test('function filtrado returns the requested bookmark status if it was stored in localStorage', async function (assert) {
@@ -60,8 +73,10 @@ module('Unit | Service | bookmarks', function (hooks) {
     assert.equal(response.length, 1);
     assert.equal(response[0].state, true);  
     assert.equal(response[0].id, "test-id");
-  });  
+  });   
+  
+  */
 
- */
+
 });
 
