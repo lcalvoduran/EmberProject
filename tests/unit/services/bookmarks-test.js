@@ -23,12 +23,9 @@ module('Unit | Service | bookmarks', function (hooks) {
   }); 
 
   test('function saveBookmark stores the bookmark status in localStorage', async function (assert) {
-    //El método setItem coge 2 parámetros "key" y "value". La "key" se usa para hacer el fetch del dato después.
     localStorage.setItem = function (key, value) {
       assert.step('setItem');
       store[key] = value;
-      //console.log(key);
-      //console.log(value);
       console.log(store[key]);
     }
     await bookmarkService.saveBookmark("test-id", true);
@@ -39,8 +36,6 @@ module('Unit | Service | bookmarks', function (hooks) {
     localStorage.getItem = () => {           
       return '[{"id": "test-id", "state": true}]'
     }
-    //TENGO QUE DEJAR ESTO ASÍ. Porque nada más cargar la página no me va a leer nada con el loadAllBookmarks (Porque no hay NADA). Sin embargo
-    //cuando llega el test tiene que meterlo en localStorage, loadAllBookmarks SÍ USA localStorage, filtrado NO.
     await bookmarkService.loadAllBookmarks(); 
     let response = await bookmarkService.filtrado("test-id");    
     assert.equal(response, true);
